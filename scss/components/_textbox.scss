@@ -1,0 +1,54 @@
+input[type=text],input[type=password],input[type=date]{
+    @include bordesInputText;
+    margin-left:25%;
+    width: 50%;
+    padding:8px 5px;
+    color:$colorTexto;
+    background:$colorFondoInputText;
+    box-shadow:$sombraInputText;
+    margin-bottom:20px;
+    &.formulario{
+        width:100%;
+        margin-left:0px;
+    }
+    &.contador{
+        width: 5%;
+    }
+}
+input[type=checkbox] {
+ 	display:inline-block;
+    vertical-align:top;
+}
+.contenedorBoton{
+ 	padding:0 20px 20px 20px; 
+    &:after {
+        clear:both;
+        /*Hacemos que actue como una tabla*/
+        display:table;
+        content:"";
+    }
+    a{
+        display:block;
+        float:left;
+        color:$colorEnlace;
+        padding-top:8px;
+    }
+}
+label{
+    color:$colorLabel;
+    margin-left:25%;
+    display:block;
+    padding-bottom:9px;
+    &[for=recordar]{
+        color:$colorTexto;
+        display:inline-block;
+        padding-bottom:0;
+        padding-top:5px;
+    }
+    &.formulario{
+        margin-left:0px;
+    }
+}
+input[type=text]:hover,input[type=password]:hover,label:hover ~ input[type=text],label:hover ~ input[type=password]{
+ 	background:$colorFondoInputTextHover;
+}

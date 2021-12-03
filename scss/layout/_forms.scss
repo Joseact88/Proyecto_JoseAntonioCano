@@ -1,0 +1,35 @@
+form{
+    background:$colorFondoFormulario; 
+    @include tamanyoFormulario;
+    margin: auto;
+    border:$bordesFormulario;
+    border-radius:0.5em;
+    box-shadow: 0 5px 10px 5px rgba(0,0,0,0.2);
+    h1{
+        font-size:$tamanyoH1;
+        text-shadow:$sombraH1;
+        text-align:center;
+        padding:15px 0;
+        border-bottom:$bordesH1;
+        position:relative;
+    }
+    &.login{
+        @include tamanyoLogin;
+        margin:30px auto;
+        /*Recortamos el contenido del rectangulo para que no se salga del formulario*/
+        overflow:hidden;
+        position:relative;
+        h1{
+            &:after{
+                @include rectanguloLogin;
+            }
+        }
+    }
+    &.examen{
+        @include tamanyoFormularioExamenes;
+    }
+}
+.inset{
+    padding:20px; 
+    border-top:1px solid #19191a;
+}

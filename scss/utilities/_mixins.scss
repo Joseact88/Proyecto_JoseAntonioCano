@@ -1,0 +1,45 @@
+@mixin tamanyoTablaExamen {
+    width: $anchuraTablaExamen;
+    height: $alturaTablaExamen;
+}
+@mixin bordesThead {
+    border-bottom: solid 5px $bordesthead;
+}
+@mixin coloresTh {
+    background-color: $theadBgColor;
+    color: $colorTabla;
+}
+@mixin coloresTdHover {
+    background-color: $hoverColorTabla;
+    color: $colorTabla;
+}
+@mixin bordesInputText {
+    border:1px solid $colorBordeInputText;
+    border-radius:0.3em;
+}
+@mixin rectanguloLogin {
+    @include tamanyoRectangulo;
+    content:"";
+    display:block;
+    position:absolute;
+    top:0;
+    left:50px;
+    pointer-events:none;
+    transform:rotate(45deg);
+    background:$fondoRectangulo;
+}
+@mixin tamanyoRectangulo {
+    width:200px;
+    height:80px;
+}
+@mixin tamanyoLogin {
+    width:$anchuraLogin;
+    height: 320px;
+}
+@mixin tamanyoFormulario {
+    width:900px;
+}
+@mixin tamanyoFormularioExamenes {
+    width:900px;
+    height: 800px;
+}

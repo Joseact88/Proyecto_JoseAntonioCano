@@ -1,0 +1,10 @@
+select{
+    display:block;
+    margin-left:25%;
+    color:$colorLabel;
+    background:$colorFondoInputText;
+    box-shadow:$sombraInputText;
+    &:hover{
+        background:$colorFondoInputTextHover;
+    }
+}

@@ -1,0 +1,32 @@
+table{
+	background-color: $bgColorTabla;
+    display: inline-block;
+	text-align: left;
+	border-collapse: collapse;
+	width: 80%;    
+    border-radius:0.4em;
+    margin-left: 3.5%;
+    margin-top: 3%;
+    &.tablaExamen{
+        @include tamanyoTablaExamen;
+    }
+    th, td{
+        padding: 20px;
+        width: 100%;
+    }
+    thead{
+        @include bordesThead;
+        @include coloresTh;
+    }
+    tr{
+        &:nth-child(even){
+            background-color: $bgTrPar;
+        }
+        &:hover td{
+            @include coloresTdHover;
+        }
+        &.oculto{
+            display: none;
+        }
+    }
+}

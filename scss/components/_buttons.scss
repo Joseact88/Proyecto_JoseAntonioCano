@@ -1,0 +1,11 @@
+input[type=submit] {
+    padding:5px 20px;
+    border:$bordeBotones;
+    border-radius:0.3em;
+    background:$colorFondoBotones;
+    color:$colorTexto;
+    float:right;
+    font-weight:bold;
+    cursor:pointer;
+    font-size:13px;
+}

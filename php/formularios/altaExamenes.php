@@ -73,7 +73,7 @@ if(isset($_POST['aceptar']))
             <tbody id="tbodyPreguntasExamen">
         </table>
         <input type="text" readonly="true" id="contador" class="contador">
-        <p class="contenedorBoton"><input type="submit" name="aceptar" value="Aceptar"></p>
+        <p class="contenedorBoton"><input type="submit" name="aceptar" value="Aceptar"> </p>
     </form>
 </body>
 </html>

@@ -36,25 +36,40 @@ class GBD
     //Insertamos un usuario
     public static function grabaUsuario(Usuario $a)
     {
-        $nombre =$a->nombre;
-        $apellidos =$a->apellidos;
-        $password =md5($a->password);
-        $fechaNac =$a->fechaNac;
-        $idRol =$a->idRol;
-        $activo =$a->activo;
-        $correo =$a->correo;
+        try {  
+            self::$conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+          
+            self::$conexion->beginTransaction();
 
-        $consulta = self::$conexion->prepare("Insert into usuario (nombre, apellidos, password, fechaNac, idRol, activo, correo) VALUES (:nombre, :apellidos, :password, :fechaNac, :idRol, :activo, :correo)");
-        
-        $consulta->bindParam(':nombre',$nombre);
-        $consulta->bindParam(':apellidos',$apellidos);
-        $consulta->bindParam(':password',$password);
-        $consulta->bindParam(':fechaNac',$fechaNac);
-        $consulta->bindParam(':idRol',$idRol);
-        $consulta->bindParam(':activo',$activo);
-        $consulta->bindParam(':correo',$correo);
-        
-        $consulta->execute();
+            $nombre =$a->nombre;
+            $apellidos =$a->apellidos;
+            $password =md5($a->password);
+            $fechaNac =$a->fechaNac;
+            $idRol =$a->idRol;
+            $activo =$a->activo;
+            $correo =$a->correo;
+
+            $consulta = self::$conexion->prepare("Insert into usuario (nombre, apellidos, password, fechaNac, idRol, activo, correo) VALUES (:nombre, :apellidos, :password, :fechaNac, :idRol, :activo, :correo)");
+            
+            $consulta->bindParam(':nombre',$nombre);
+            $consulta->bindParam(':apellidos',$apellidos);
+            $consulta->bindParam(':password',$password);
+            $consulta->bindParam(':fechaNac',$fechaNac);
+            $consulta->bindParam(':idRol',$idRol);
+            $consulta->bindParam(':activo',$activo);
+            $consulta->bindParam(':correo',$correo);
+            
+            $consulta->execute();
+            $idAltaPorConfirmar=md5(libreria::generaContasenya());
+            self::insertaAltaPorConfirmar($idAltaPorConfirmar,self::obtieneUltimoIdUsuario());
+            $enlace="<a href='http://localhost/Proyecto_JoseAntonioCano/php/formularios/confimacionContrasenia.php?idAltaPorConfirmar=$idAltaPorConfirmar'>Restablecer Contraseña</a>";
+            Libreria::enviaEmail('Escribe la contraseña',$correo,$nombre,"Porfavor cambie la contraseña en el siguiente enlace:<br>$enlace");
+    
+            self::$conexion->commit();
+            
+          } catch (Exception $e) {
+            self::$conexion->rollBack();
+        }
     }
     //Modificamos un usuario
     public static function modificaUsuario(Usuario $a)
@@ -69,6 +84,15 @@ class GBD
         $correo =$a->correo;
 
         $consulta = self::$conexion->prepare("Update usuario set nombre='$nombre', apellidos='$apellidos', password='$password', fechaNac='$fechaNac', idRol='$idRol' , activo='$activo',Correo='$correo' where idUsuario='$idUsuario'");
+        
+        $consulta->execute();
+    }
+    //Modificamos la contraseña de un usuario
+    public static function cambiaContrasenia($contrasena, $nombre, $idUsuario)
+    {
+        $idUsuario=intval($idUsuario);
+        $contrasena=md5($contrasena);
+        $consulta = self::$conexion->prepare("Update usuario set nombre='$nombre', password='$contrasena' where idUsuario=$idUsuario");
         
         $consulta->execute();
     }
@@ -108,6 +132,12 @@ class GBD
         }
         return $idUsuario;
     }
+    public static function eliminaAltaConfirmar($idAltaConfirmar)
+    {
+        $consulta = self::$conexion->prepare("Delete from altasconfirmar where idAltaConfirmar='$idAltaConfirmar'");
+        
+        return $consulta->execute();
+    }
     //Comprobamos si existe el usuario que nos pasa
     public static function insertaAltaPorConfirmar($idAltaPorConfirmar,$idUsuario)
     {
@@ -129,6 +159,33 @@ class GBD
         }
         
         return $usuarios;
+    }
+    //Insertamos un usuario de forma masiva
+    public static function grabaUsuarioMasiva($nombre,$correo)
+    {
+        try {  
+            self::$conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+          
+            self::$conexion->beginTransaction();
+            $password=md5(libreria::generaContasenya());
+            $rol=1;
+            $activo=1;
+            $consulta = self::$conexion->prepare("Insert into usuario (nombre, password, activo,idRol, correo) VALUES (:nombre, '$password', $activo,$rol, :correo)");
+            
+            $consulta->bindParam(':nombre',$nombre);
+            $consulta->bindParam(':correo',$correo);
+            
+            $consulta->execute();
+            $idAltaPorConfirmar=md5(libreria::generaContasenya());
+            self::insertaAltaPorConfirmar($idAltaPorConfirmar,self::obtieneUltimoIdUsuario());
+            $enlace="<a href='http://localhost/Proyecto_JoseAntonioCano/php/formularios/confimacionContrasenia.php?idAltaPorConfirmar=$idAltaPorConfirmar'>Restablecer Contraseña</a>";
+            Libreria::enviaEmail('Escribe la contraseña',$correo,$nombre,"Porfavor cambie la contraseña en el siguiente enlace:<br>$enlace");
+            self::$conexion->commit();
+            
+          } catch (Exception $e) {
+            self::$conexion->rollBack();
+        }
+        
     }
     //Leemos todos los roles
     public static function leeListaRoles()
@@ -434,6 +491,20 @@ class GBD
         $consulta->execute();
     }
     public static function altaPreguntasExamen($descripcion, $duracion, $preguntas)
+    {
+        //Creamos el examen
+        $examen=new Examen($descripcion,$duracion, true);
+        //Grabamos el examen
+        GBD::grabaExamen($examen);
+        //Buscamos la ultima id añadida en examen
+        $ultimoIdExamen=GBD::obtieneUltimoIdExamen();
+        //Insertamos las preguntas con la id del examen
+        for($i=0;$i<count($preguntas);$i++)
+        {
+            GBD::grabaPreguntasExamen($ultimoIdExamen,$preguntas[$i]);
+        }
+    }
+    public static function altaPreguntasExamenMasiva($descripcion, $duracion, $preguntas)
     {
         //Creamos el examen
         $examen=new Examen($descripcion,$duracion, true);

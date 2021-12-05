@@ -30,10 +30,6 @@ if(isset($_POST['aceptar']))
         $usuario=new Usuario($nombre,$apellidos, libreria::generaContasenya(), $fechaNac, $rol, 1, $correo);
         //Grabamos el usuario
         GBD::grabaUsuario($usuario);
-        $idAltaPorConfirmar=md5(libreria::generaContasenya());
-        GBD::insertaAltaPorConfirmar($idAltaPorConfirmar,GBD::obtieneUltimoIdUsuario());
-        $enlace="<a href='http://localhost/Proyecto/php/formularios/confimacionContrasenia.php?idAltaPorConfirmar=$idAltaPorConfirmar'>Restablecer Contraseña</a>";
-        Libreria::enviaEmail('Escribe la contraseña',$correo,$nombre,"Porfavor cambie la contraseña en el siguiente enlace:<br>$enlace");
     }
 }
 ?>
@@ -64,7 +60,7 @@ if(isset($_POST['aceptar']))
                 }
             ?>
         </select>
-        <p class="contenedorBoton"><input type="submit" name="aceptar" value="Aceptar"></p>
+        <p class="contenedorBoton"><input type="submit" name="aceptar" value="Aceptar" id="aceptar"></p>
     </form>
 </body>
 </html>

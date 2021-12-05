@@ -9,6 +9,7 @@ table{
     margin-top: 3%;
     &.tablaExamen{
         @include tamanyoTablaExamen;
+        overflow:scroll;
     }
     th, td{
         padding: 20px;

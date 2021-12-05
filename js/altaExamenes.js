@@ -66,28 +66,54 @@ window.addEventListener("load", function()
         //Añadimos el evento drop para poder soltar la fila sobre las celdas
         td1.ondrop=function(ev)
         {
-            ev.preventDefault();
-            //Paramos la propagación para que no llegue al evento de la fila
-            ev.stopPropagation();
-            /*if(contador.value<numPreguntas.value)
-            {*/
+            
+            if(td1.parentNode.parentNode.parentNode.id=="preguntas")
+            {
+                ev.preventDefault();
+                //Paramos la propagación para que no llegue al evento de la fila
+                ev.stopPropagation();
                 var data = ev.dataTransfer.getData("text");
                 const fila=ev.target.parentNode;
                 //Insertamos la nueva fila 
                 fila.parentNode.insertBefore(document.getElementById(data),fila);
                 contador.value=contenedorPreguntasExamen.children.length;
-            //}
+            }
+            if(contenedorPreguntasExamen.children.length<parseInt(numPreguntas.value))
+            {
+                ev.preventDefault();
+                //Paramos la propagación para que no llegue al evento de la fila
+                ev.stopPropagation();
+                var data = ev.dataTransfer.getData("text");
+                const fila=ev.target.parentNode;
+                //Insertamos la nueva fila 
+                fila.parentNode.insertBefore(document.getElementById(data),fila);
+                contador.value=contenedorPreguntasExamen.children.length;
+            }
         }
         td2.ondrop=function(ev)
         {
-            ev.preventDefault();
-            //Paramos la propagación para que no llegue al evento de la fila
-            ev.stopPropagation();
-            var data = ev.dataTransfer.getData("text");
-            const fila=ev.target.parentNode;
-            //Insertamos la nueva fila 
-            fila.parentNode.insertBefore(document.getElementById(data),fila);
-            contador.value=contenedorPreguntasExamen.children.length;
+            if(td2.parentNode.parentNode.parentNode.id=="preguntas")
+            {
+                ev.preventDefault();
+                //Paramos la propagación para que no llegue al evento de la fila
+                ev.stopPropagation();
+                var data = ev.dataTransfer.getData("text");
+                const fila=ev.target.parentNode;
+                //Insertamos la nueva fila 
+                fila.parentNode.insertBefore(document.getElementById(data),fila);
+                contador.value=contenedorPreguntasExamen.children.length;
+            }
+            if(contenedorPreguntasExamen.children.length<parseInt(numPreguntas.value))
+            {
+                ev.preventDefault();
+                //Paramos la propagación para que no llegue al evento de la fila
+                ev.stopPropagation();
+                var data = ev.dataTransfer.getData("text");
+                const fila=ev.target.parentNode;
+                //Insertamos la nueva fila 
+                fila.parentNode.insertBefore(document.getElementById(data),fila);
+                contador.value=contenedorPreguntasExamen.children.length;
+            }
         }
         //Añadimos las celdas a la fila
         tr.appendChild(td1);

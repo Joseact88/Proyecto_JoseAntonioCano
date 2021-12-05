@@ -4,6 +4,7 @@ select{
     color:$colorLabel;
     background:$colorFondoInputText;
     box-shadow:$sombraInputText;
+    margin-bottom:20px;
     &:hover{
         background:$colorFondoInputTextHover;
     }

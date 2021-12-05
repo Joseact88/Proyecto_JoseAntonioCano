@@ -15,10 +15,10 @@ form{
     }
     &.login{
         @include tamanyoLogin;
-        margin:30px auto;
+        position: relative;
+        margin: 30px auto;
         /*Recortamos el contenido del rectangulo para que no se salga del formulario*/
         overflow:hidden;
-        position:relative;
         h1{
             &:after{
                 @include rectanguloLogin;

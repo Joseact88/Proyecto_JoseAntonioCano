@@ -77,7 +77,7 @@ if(isset($_POST['aceptar']))
         
         <label for="imagen">Seleccionar imagen</label><input type="file" name="imagen" id="imagen">
 
-        <p class="contenedorBoton"><input type="submit" name="aceptar" value="Aceptar"></p>
+        <p class="contenedorBoton"><input type="submit" name="aceptar" value="Aceptar" id="aceptar"></p>
     </form>
 </body>
 </html>

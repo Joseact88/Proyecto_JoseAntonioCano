@@ -37,7 +37,7 @@ if(isset($_POST['aceptar']))
     <form action="altaTematicas.php" method="post">
         <h1>Alta Temática</h1>
         <label>Descripcion:</label><input type="text" name="descripcion" id="descripcion" required maxlength="45">
-        <p class="contenedorBoton"><input type="submit" name="aceptar" value="Aceptar"></p>
+        <p class="contenedorBoton"><input type="submit" name="aceptar" value="Aceptar" id="aceptar"></p>
     </form>
 </body>
 </html>

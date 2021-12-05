@@ -1,14 +1,32 @@
-<nav id="foto">
-
+<nav>
+    <ul>
+        <li class="menu">
+            <a href="#">Examenes</a>
+            <ul class="submenu">
+                <li><a href="#">Alta Examenes</a></li>
+                <li><a href="#">Alta Masiva Examenes</a></li>
+            </ul>
+        </li>
+        <li class="menu">
+            <a href="#">Preguntas</a>
+            <ul class="submenu">
+                <li><a href="#">Preguntas</a></li>
+                <li><a href="#">Preguntas</a></li>
+            </ul>
+        </li>
+        <li class="menu">
+            <a href="#">Temáticas</a>
+            <ul class="submenu">
+                <li><a href="#">Alta Temáticas</a></li>
+                <li><a href="#">Alta Masiva Temáticas</a></li>
+            </ul>
+        </li>
+        <li class="menu">
+            <a href="#">Usuarios</a>
+            <ul class="submenu">
+                <li><a href="#">Alta Usuarios</a></li>
+                <li><a href="#">Alta Masiva Usuarios</a></li>
+            </ul>
+        </li>
+    </ul>
 </nav>
-<div class="dropdown">
-    <li class=" even">
-        <button class="mainmenubtn">Main Menu</button>
-    <li class=" odd">
-    <div class="dropdown-child"><li class=" even">
-        <a href="">Usuarios</a>
-        <a href="">Temáticas</a>
-        <a href="">Preguntas</a>
-        <a href="">Exámenes</a>
-    </div>
-</div>

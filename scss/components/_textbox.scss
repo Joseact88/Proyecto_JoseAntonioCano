@@ -1,4 +1,4 @@
-input[type=text],input[type=password],input[type=date]{
+input[type=text],input[type=password],input[type=date],input[type=file],textarea{
     @include bordesInputText;
     margin-left:25%;
     width: 50%;

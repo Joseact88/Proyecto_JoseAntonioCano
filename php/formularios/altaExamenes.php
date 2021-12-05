@@ -39,6 +39,9 @@ if(isset($_POST['aceptar']))
     <link rel="stylesheet" href="../../css/main.css" type="text/css">
 </head>
 <body>
+    <?php 
+        require "../../header.php";
+    ?>
     <form action="altaExamenes.php" method="post" class="examen">
         <h1>Alta Exámenes</h1>
         <label>Descripción: </label> <input type="text" id="descripcion" name="descripcion" maxlength="200">
@@ -73,7 +76,7 @@ if(isset($_POST['aceptar']))
             <tbody id="tbodyPreguntasExamen">
         </table>
         <input type="text" readonly="true" id="contador" class="contador">
-        <p class="contenedorBoton"><input type="submit" name="aceptar" value="Aceptar"> </p>
+        <p class="contenedorBoton"><input type="submit" name="aceptar" value="Aceptar" id="aceptar"></p>
     </form>
 </body>
 </html>

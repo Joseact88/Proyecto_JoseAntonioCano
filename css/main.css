@@ -44,7 +44,7 @@ table {
 /*Formularios*/
 /*Login*/
 table {
-  background-color: #049DD9;
+  background-color: #333;
   display: inline-block;
   text-align: left;
   border-collapse: collapse;
@@ -57,6 +57,7 @@ table {
 table.tablaExamen {
   width: 400px;
   height: 400px;
+  overflow: scroll;
 }
 
 table th, table td {
@@ -95,7 +96,7 @@ input[type=submit] {
   font-size: 13px;
 }
 
-input[type=text], input[type=password], input[type=date] {
+input[type=text], input[type=password], input[type=date], input[type=file], textarea {
   border: 1px solid #222;
   border-radius: 0.3em;
   margin-left: 25%;
@@ -109,12 +110,12 @@ input[type=text], input[type=password], input[type=date] {
   margin-bottom: 20px;
 }
 
-input[type=text].formulario, input[type=password].formulario, input[type=date].formulario {
+input[type=text].formulario, input[type=password].formulario, input[type=date].formulario, input[type=file].formulario, textarea.formulario {
   width: 100%;
   margin-left: 0px;
 }
 
-input[type=text].contador, input[type=password].contador, input[type=date].contador {
+input[type=text].contador, input[type=password].contador, input[type=date].contador, input[type=file].contador, textarea.contador {
   width: 5%;
 }
 
@@ -171,6 +172,7 @@ select {
   background: linear-gradient(#1f2124, #27292c);
   -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
           box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
+  margin-bottom: 20px;
 }
 
 select:hover {
@@ -199,10 +201,10 @@ form h1 {
 form.login {
   width: 400px;
   height: 320px;
+  position: relative;
   margin: 30px auto;
   /*Recortamos el contenido del rectangulo para que no se salga del formulario*/
   overflow: hidden;
-  position: relative;
 }
 
 form.login h1:after {
@@ -227,6 +229,95 @@ form.examen {
 .inset {
   padding: 20px;
   border-top: 1px solid #19191a;
+}
+
+nav {
+  position: static;
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+nav > ul {
+  width: 100%;
+  height: 32px;
+  background-color: #666;
+  color: #eee;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+nav ul .submenu {
+  -webkit-transition: height 0.5s ease-out;
+  transition: height 0.5s ease-out;
+  position: static;
+  height: 0px;
+  overflow: hidden;
+}
+
+nav ul li.menu {
+  float: left;
+}
+
+nav ul li.menu > a {
+  -webkit-transition: padding 0.4s ease-out;
+  transition: padding 0.4s ease-out;
+}
+
+nav ul li.menu:hover > a {
+  padding: 10px 20px;
+}
+
+nav ul li.menu:hover ul.submenu {
+  height: 100px;
+}
+
+nav a {
+  background-color: #666;
+  color: #eee;
+  text-decoration: none;
+  width: 160px;
+  padding: 7px 20px;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+}
+
+nav a:hover {
+  background-color: #888;
+  color: #fff;
+  -webkit-animation: iluminar 0.4s linear;
+  animation: iluminar 0.4s linear;
+}
+
+body {
+  padding: 0px;
+  margin: 0px;
+}
+
+header {
+  padding: 12px 30px;
+  font-size: 1.8em;
+  color: #444;
+  background-color: #eee;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px #aaa;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+footer {
+  background-color: #666;
+  color: #eee;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  position: static;
+  width: 100%;
+  bottom: 0px;
+  padding: 5px;
 }
 
 * {

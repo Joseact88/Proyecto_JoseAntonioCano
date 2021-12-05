@@ -1,6 +1,6 @@
 window.addEventListener("load", function()
 {
-    const aceptar=this.document.getElementByName("aceptar");
+    const aceptar=this.document.getElementById("aceptar");
     const form=this.document.getElementById("form1");
     const tematica=this.document.getElementById("tematica");
     const enunciado=this.document.getElementById("enunciado");
@@ -28,6 +28,7 @@ window.addEventListener("load", function()
             }
             else
             {
+                fichero.value="";
                 alert("Selecciona una imagen");
             }
         }

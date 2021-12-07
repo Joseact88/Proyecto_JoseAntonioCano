@@ -8,4 +8,26 @@ input[type=submit] {
     font-weight:bold;
     cursor:pointer;
     font-size:13px;
+    &.activo{
+        background-color: red;
+    }
+}
+.contenedorBoton{
+    padding:0 20px 20px 20px; 
+    margin-right: 42.5%;
+    &.login{
+        margin-right: 10px;
+    }
+    &:after {
+       clear:both;
+       /*Hacemos que actue como una tabla*/
+       display:table;
+       content:"";
+    }
+    a{
+       display:block;
+       float:left;
+       color:$colorEnlace;
+       padding-top:8px;
+    }
 }

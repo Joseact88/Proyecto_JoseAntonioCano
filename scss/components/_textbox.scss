@@ -8,31 +8,19 @@ input[type=text],input[type=password],input[type=date],input[type=file],textarea
     box-shadow:$sombraInputText;
     margin-bottom:20px;
     &.formulario{
-        width:100%;
-        margin-left:0px;
+        width:90%;
+        margin-left:10px;
     }
     &.contador{
         width: 5%;
+        float: right;
+        margin-right: 10%;
+        margin-top: -2%;
     }
 }
 input[type=checkbox] {
  	display:inline-block;
     vertical-align:top;
-}
-.contenedorBoton{
- 	padding:0 20px 20px 20px; 
-    &:after {
-        clear:both;
-        /*Hacemos que actue como una tabla*/
-        display:table;
-        content:"";
-    }
-    a{
-        display:block;
-        float:left;
-        color:$colorEnlace;
-        padding-top:8px;
-    }
 }
 label{
     color:$colorLabel;
@@ -46,7 +34,11 @@ label{
         padding-top:5px;
     }
     &.formulario{
-        margin-left:0px;
+        margin-left:10px;
+        margin-top:10px;
+    }
+    &.recordar{
+        margin-top: 0px;
     }
 }
 input[type=text]:hover,input[type=password]:hover,label:hover ~ input[type=text],label:hover ~ input[type=password]{

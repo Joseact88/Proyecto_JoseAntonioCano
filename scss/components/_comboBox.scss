@@ -4,8 +4,12 @@ select{
     color:$colorLabel;
     background:$colorFondoInputText;
     box-shadow:$sombraInputText;
-    margin-bottom:20px;
+    margin-bottom:10px;
     &:hover{
         background:$colorFondoInputTextHover;
+    }
+    &.comboNumero{
+        margin: 10px;
+        margin-left:15%;
     }
 }

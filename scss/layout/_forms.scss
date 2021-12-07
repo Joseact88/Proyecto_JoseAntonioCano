@@ -25,11 +25,10 @@ form{
             }
         }
     }
+    &.tablas{
+        @include tamanyoFormularioTablas;
+    }
     &.examen{
         @include tamanyoFormularioExamenes;
     }
-}
-.inset{
-    padding:20px; 
-    border-top:1px solid #19191a;
 }

@@ -147,15 +147,31 @@ class GBD
         $consulta->execute();
     }
     //Leemos todos los usuarios con rol 2 (alumnos)
-    public static function leeListaUsuarios()
+    public static function leeListaUsuarios($filas, $pagina)
     {
-        $consulta = self::$conexion->query("Select idUSuario, nombre, apellidos, password,fechaNac, activo, correo FROM usuario where idRol='2'");
+        $filas=intval($filas);
+        $pagina=intval($pagina);
+        $consulta = self::$conexion->query("Select idUSuario, nombre, apellidos, password,fechaNac, activo, correo FROM usuario where idRol=2");
         $usuarios=array();
+        $usuarios =$consulta->fetchAll();
+        $total = count($usuarios);
+        $paginas = ceil($total /$filas);
+        $usuarios = array();
+        if ($pagina <= $paginas)
+        {
+            $inicio = ($pagina-1) * $filas;
+            $consulta= self::$conexion->query("Select idUSuario, nombre, apellidos, password,fechaNac, activo, correo FROM usuario where idRol=2 limit $inicio, $filas");
+            $usuarios = $consulta->fetchAll(PDO::FETCH_ASSOC);
+        }
+        return $usuarios;
+    }
+    //Contamos el número de usuarios que hay
+    public static function numeroUsuarios()
+    {
+        $consulta = self::$conexion->query("Select count(idUSuario) FROM usuario where idRol=2");
         while ($registro = $consulta->fetch()) 
         {
-            $usuario=new Usuario($registro['nombre'],$registro['apellidos'],$registro['password'],$registro['fechaNac'],2,$registro['activo'], $registro['correo']);
-            $usuario->idUsuario=$registro['idUSuario'];
-            $usuarios[]=$usuario;
+            $numUsuarios=$registro['count(idUsuario)'];
         }
         
         return $usuarios;
@@ -491,20 +507,6 @@ class GBD
         $consulta->execute();
     }
     public static function altaPreguntasExamen($descripcion, $duracion, $preguntas)
-    {
-        //Creamos el examen
-        $examen=new Examen($descripcion,$duracion, true);
-        //Grabamos el examen
-        GBD::grabaExamen($examen);
-        //Buscamos la ultima id añadida en examen
-        $ultimoIdExamen=GBD::obtieneUltimoIdExamen();
-        //Insertamos las preguntas con la id del examen
-        for($i=0;$i<count($preguntas);$i++)
-        {
-            GBD::grabaPreguntasExamen($ultimoIdExamen,$preguntas[$i]);
-        }
-    }
-    public static function altaPreguntasExamenMasiva($descripcion, $duracion, $preguntas)
     {
         //Creamos el examen
         $examen=new Examen($descripcion,$duracion, true);

@@ -69,10 +69,10 @@ if(isset($_POST['login']))
             <label class="formulario">Contraseña</label><input type="password" name="password" maxlength="45" value="<?php echo $password?>" class="formulario">
             <p>
                 <input type="checkbox" name="recordar" id="recordar" checked="<?php $checked?>">
-                <label for="recordar" class="formulario">Recuérdame 30 días</label>
+                <label for="recordar" class="formulario recordar">Recuérdame 30 días</label>
             </p>
         </div>
-        <p class="contenedorBoton">
+        <p class="contenedorBoton login">
             <a>¿Has olvidado la contraseña?</a>
             <input type="submit" name="login" value="Aceptar">
         </p>

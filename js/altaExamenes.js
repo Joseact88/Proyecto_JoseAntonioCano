@@ -156,7 +156,8 @@ window.addEventListener("load", function()
         {
             preguntas.push(contenedorPreguntasExamen.children[i].id.split("_")[1]);
         }
-        var texto=encodeURI("aceptar=aceptar&descripcion="+descripcion.value+"&duracion="+duracion.value+"&preguntasExamen="+preguntas);
+        debugger;
+        var texto=encodeURI("aceptar=aceptar&descripcion="+descripcion.value+"&duracion="+duracion.value+"&preguntasExamen="+preguntas+"&numPreguntas="+numPreguntas.value);
         const ajax=new XMLHttpRequest();
         
         ajax.open("POST","altaExamenes.php");

@@ -5,12 +5,14 @@ class Examen implements JsonSerializable
     private $descripcion;
     private $duracion;
     private $activo;
+    private $numPreguntas;
 
-    public function __construct($_descripcion,$_duracion, $_activo) 
+    public function __construct($_descripcion,$_duracion, $_activo, $_numPreguntas) 
     {
         $this->descripcion = $_descripcion;
         $this->duracion=$_duracion;
         $this->activo = $_activo;
+        $this->numPreguntas = $_numPreguntas;
     }
 
     public function __get($variable) 

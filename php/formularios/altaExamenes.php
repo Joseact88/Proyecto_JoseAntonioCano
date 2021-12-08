@@ -24,7 +24,7 @@ if(isset($_POST['aceptar']))
         $preguntasExamen=array();
         $preguntasExamen=explode(",",$_POST['preguntasExamen']);
         //Insertamos el examen
-        GBD::altaPreguntasExamen($descripcion, $duracion,$preguntasExamen);
+        GBD::altaPreguntasExamen($descripcion, $duracion,$preguntasExamen, $numPreguntas);
     }
 }
 ?>

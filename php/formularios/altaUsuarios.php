@@ -63,4 +63,7 @@ if(isset($_POST['aceptar']))
         <p class="contenedorBoton"><input type="submit" name="aceptar" value="Aceptar" id="aceptar"></p>
     </form>
 </body>
+    <?php 
+        require "../../footer.php";
+    ?>
 </html>

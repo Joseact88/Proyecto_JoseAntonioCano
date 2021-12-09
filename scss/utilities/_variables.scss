@@ -1,11 +1,13 @@
 /*General*/
-$colorFondo:#333;
+$colorFondo:#7F7E7E;
 $colorTexto:white;
 $fuente:"HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
 $tamanyoTexto:12px;
 $tamanyoH1:18px;
-$sombraH1:0 1px 0 black;
-$bordesH1:1px solid rgba(0,0,0,1);
+$tamanyoH2:16px;
+$sombraH1:0 2px 0 black;
+$sombraH2:0 1px 0 gray;
+$bordesH1:1px solid white;
 $colorFondoBotones:#0184ff;
 $bordeBotones:1px solid rgba(0,0,0,0.4);
 /*Tablas*/
@@ -13,12 +15,13 @@ $alturaTablaExamen:400px;
 $anchuraTablaExamen:400px;
 $alturaFila:50px;
 $bordesTabla:1px;
-$theadBgColor:#033E8C;
-$bordesthead:#023059;
+$theadBgColor:#4E4D4D;
+$bordesthead:#0184ff;
 $bgColorTabla:#333;
 $colorTabla:white;
-$bgTrPar:#0477BF;
-$hoverColorTabla:#023059;
+$colorPares:black;
+$bgTrPar:#ABAAAA;
+$hoverColorTabla:#DDDADA;
 /*Inputs*/
 $colorFondoInputTextHover:#27292c;
 $colorFondoInputText:linear-gradient(#1f2124, #27292c);
@@ -33,3 +36,8 @@ $bordesFormulario:1px solid #191919;
 $anchuraLogin:400px;
 $fondoRectangulo:linear-gradient(50deg, rgba(255,255,255,0.15), rgba(0,0,0,0));
 $sombraFormularioLogin:0 5px 10px 5px rgba(0,0,0,0.2);
+/*Footer*/
+$colorLetraFooter:#7a7a7a;
+$colorH2Footer:#343434;
+$tamanyoLetraFooter:14px;
+$colorEnlaceFooter:#7a7a7a;

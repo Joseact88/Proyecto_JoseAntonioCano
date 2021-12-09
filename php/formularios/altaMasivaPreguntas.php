@@ -33,5 +33,8 @@ if(isset($_POST['aceptar']))
         <input type="file" name="csv" id="csv">
         <p class="contenedorBoton"><input type="submit" name="aceptar" value="Aceptar" id="aceptar"></p>
     </form>
+    <?php 
+        require "../../footer.php";
+    ?>
 </body>
 </html>

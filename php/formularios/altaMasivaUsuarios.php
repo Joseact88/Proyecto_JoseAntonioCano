@@ -54,8 +54,11 @@ if(isset($_POST['aceptar']))
         <h1>Alta Masiva de Usuarios</h1>
         <label>Alta Masiva Usuarios</label><textarea name="textUsuarios" id="textUsuarios" rows="25" cols="100" required></textarea>
         <?php if(isset($validaciones->errores['textUsuarios'])) echo $validaciones->errores['textUsuarios'] ?>
-        <input type="file" name="csv" id="csv">
+        <input type="file" name="csv" id="csv" accept=".csv">
         <p class="contenedorBoton"><input type="submit" name="aceptar" value="Aceptar" id="aceptar"></p>
     </form>
+    <?php 
+        require "../../footer.php";
+    ?>
 </body>
 </html>

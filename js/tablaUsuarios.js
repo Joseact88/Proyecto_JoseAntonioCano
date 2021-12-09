@@ -116,7 +116,7 @@ window.addEventListener("load", function()
                             if(j!=1)
                             {
                                 //Buscamos el activo
-                                if(listaBotones[j].className=="activo")
+                                if(listaBotones[j].classList.contains("activo"))
                                 {
                                     //Eliminamos el activo
                                     listaBotones[j].classList.remove("activo");
@@ -137,7 +137,7 @@ window.addEventListener("load", function()
                             if(j!=listaBotones.length-2)
                             {
                                 //Buscamos el activo
-                                if(listaBotones[j].className=="activo")
+                                if(listaBotones[j].classList.contains("activo"))
                                 {
                                     //Eliminamos el activo
                                     listaBotones[j].classList.remove("activo");

@@ -12,6 +12,24 @@ window.addEventListener("load", function()
     const contenedorPreguntasExamen=this.document.getElementById("tbodyPreguntasExamen");
     const tablaPreguntas=this.document.getElementById("preguntas");
     const tablaPreguntasExamen=this.document.getElementById("preguntasExamen");
+    //Capturamos el buscador
+    const filtro=document.getElementById("filtro");
+    filtro.onkeyup=function()
+    {
+        const tablas=contenedorPreguntas.getElementsByTagName("tr");
+        for(let i=0;i<tablas.length;i++)
+        {
+            tablas[i].classList.remove("marcado");
+            if(tablas[i].innerHTML.indexOf(filtro.value)<0)
+            {
+                tablas[i].classList.add("oculto");
+            }
+            else
+            {
+                tablas[i].classList.remove("oculto");
+            }
+        }
+    }
     //Creamos el formData
     var formData = new FormData();
     //Creamos el ajax

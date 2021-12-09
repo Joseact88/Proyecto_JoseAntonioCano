@@ -12,6 +12,8 @@ form{
         padding:15px 0;
         border-bottom:$bordesH1;
         position:relative;
+        width: 50%;
+        margin:auto;
     }
     &.login{
         @include tamanyoLogin;
@@ -22,6 +24,7 @@ form{
         h1{
             &:after{
                 @include rectanguloLogin;
+                border-width: 100%
             }
         }
     }
@@ -30,5 +33,40 @@ form{
     }
     &.examen{
         @include tamanyoFormularioExamenes;
+    }
+    &.examenEjecucion{
+        @include tamanyoFormularioExamenEjecucion;
+    }
+    p{
+        &.contenedorCheckbox{
+            margin-left: 12px;
+        }
+    }
+}
+article{
+    section{
+        &.enunciado{
+            font-size: $tamanyoH2;
+            text-align:center;
+            padding:15px 0;
+            text-shadow:$sombraH2;
+        }
+        &.respuestas{
+            text-align: center;
+            margin:auto;
+            p{
+                display: block;
+                text-align: left;
+                margin-left: 32.5%;
+                margin-bottom: 1%;
+                input[type=radio]{
+                    display: inline;
+                    margin-right: 1%;
+                }
+            }
+        }
+    }
+    &.oculto{
+        display: none;
     }
 }

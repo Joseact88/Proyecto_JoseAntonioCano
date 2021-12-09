@@ -9,22 +9,24 @@ table{
     margin-top: 3%;    
     &.tablaExamen{
         @include tamanyoTablaExamen;
-        overflow:scroll;
+        margin-top: 5px;
+        overflow-y:scroll;
         margin-left: 3.5%;
         padding-bottom: 5px;
-        margin-bottom: 3.5%;
+        margin-bottom: 2.5%;
     }
     th, td{
         padding: 20px;
         width: 100%;
     }
     thead{
-        @include bordesThead;
+        /*@include bordesThead;*/
         @include coloresTh;
     }
     tr{
         &:nth-child(even){
             background-color: $bgTrPar;
+            color:$colorPares;
         }
         &:hover td{
             @include coloresTdHover;

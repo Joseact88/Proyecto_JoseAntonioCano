@@ -67,7 +67,7 @@ if(isset($_POST['login']))
         <div class="inset">
             <label class="formulario">Usuario</label><input type="text" name="usuario" maxlength="45" value="<?php echo $nombreUsuarioCookie?>" class="formulario">
             <label class="formulario">Contraseña</label><input type="password" name="password" maxlength="45" value="<?php echo $password?>" class="formulario">
-            <p>
+            <p class="contenedorCheckbox">
                 <input type="checkbox" name="recordar" id="recordar" checked="<?php $checked?>">
                 <label for="recordar" class="formulario recordar">Recuérdame 30 días</label>
             </p>

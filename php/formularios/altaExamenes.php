@@ -59,6 +59,7 @@ if(isset($_POST['aceptar']))
                 }
             ?>
         </select>
+        <input type="text" name="filtro" id="filtro"> <span class="fas fa-search filtro"></span>
         <table id="preguntas" class="tablaExamen">
             <thead>
                 <th>Enunciado</th>
@@ -78,5 +79,8 @@ if(isset($_POST['aceptar']))
         <input type="text" readonly="true" id="contador" class="contador">
         <p class="contenedorBoton"><input type="submit" name="aceptar" value="Aceptar" id="aceptar"></p>
     </form>
+    <?php 
+        require "../../footer.php";
+    ?>
 </body>
 </html>

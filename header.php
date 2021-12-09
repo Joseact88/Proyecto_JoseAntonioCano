@@ -1,6 +1,16 @@
+<header id="main">
+<link href="../../scss/vendors/fontawesome-free-5.15.4-web/css/all.css" rel="stylesheet">
+<?php
+    $usuario=Sesion::leer('usuario');
+    if($usuario->idRol==1)
+    {
+?>
 <!--Menú para profesores-->
 <nav>
     <ul>
+        <li class="menu">
+            <img  src="../../img/pandaCar.png" alt="No se ha podido encontrar la imgen..." width="30" height="30">
+        </li>
         <li class="menu">
             <a href="#">Examenes</a>
             <ul class="submenu">
@@ -31,6 +41,9 @@
         </li>
     </ul>
 </nav>
+<?php
+    }else{
+?>
 <!--Menú para alumnos-->
 <nav>
     <ul>
@@ -45,3 +58,7 @@
         </li>
     </ul>
 </nav>
+<?php
+    }
+?>
+</header>

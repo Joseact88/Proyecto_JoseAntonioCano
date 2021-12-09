@@ -275,7 +275,7 @@ class GBD
         $pregunta=null;
         while ($registro = $consulta->fetch()) 
         {
-            $pregunta=new Pregunta($registro['enunciado'], $registro['idTematica'],$registro['idRespuestaCorrecta'],$registro['recurso']);
+            $pregunta=new Pregunta($registro['enunciado'], $registro['idTematica'],$registro['idRespuestaCorrecta'],$registro['recurso'], null);
             $pregunta->idPregunta=$idPregunta;
         }
         
@@ -395,6 +395,20 @@ class GBD
         
         return $respuestas;
     }
+    //Leemos todas las respuestas de una pregunta
+    public static function leeRespuestasPregunta($idPregunta)
+    {
+        $consulta = self::$conexion->query("Select idRespuesta, respuesta FROM respuesta where idPregunta=$idPregunta");
+        $respuestas=array();
+        while ($registro = $consulta->fetch()) 
+        {
+            $respuesta=new Respuesta($registro['respuesta'], $idPregunta);
+            $respuesta->idRespuesta=$registro['idRespuesta'];
+            $respuestas[]=$respuesta;
+        }
+        
+        return $respuestas;
+    }
     //Método que obtiene el id de la última respuesta añadida
     public static function obtieneUltimaIdRespuesta()
     {
@@ -430,16 +444,16 @@ class GBD
         //Añadimos la respuesta correcta a la pregunta insertada
         GBD::anyadeRespuestaCorrecta($ultimaIdPregunta, $respuestaCorrecta);
     }
-
+    
     //Examenes
     //Lee un examen dado su id
     public static function leeExamen($idExamen)
     {
-        $consulta = self::$conexion->query("Select descripcion, duracion, activo FROM examen where idExamen='$idExamen'");
+        $consulta = self::$conexion->query("Select descripcion, duracion, activo, numPreguntas FROM examen where idExamen='$idExamen'");
         $examen=null;
         while ($registro = $consulta->fetch()) 
         {
-            $examen=new Examen($registro['descripcion'], $registro['duracion'],$registro['activo']);
+            $examen=new Examen($registro['descripcion'], $registro['duracion'],$registro['activo'],$registro['numPreguntas']);
             $examen->idExamen=$idExamen;
         }
         
@@ -525,5 +539,23 @@ class GBD
         {
             GBD::grabaPreguntasExamen($ultimoIdExamen,$preguntas[$i]);
         }
+    }
+    //Lee las preguntas de un examen dado su id
+    public static function leePreguntasExamen($idExamen)
+    {
+        $consulta = self::$conexion->query("Select idPregunta FROM preguntasexamen where idExamen='$idExamen'");
+        $preguntas=array();
+        $respuestas=array();
+        while ($registro = $consulta->fetch()) 
+        {
+            $preguntas[]=self::leePregunta($registro['idPregunta']);
+        }
+        for($i=0;$i<count($preguntas);$i++)
+        {
+            $respuestas[$i]=self::leeRespuestasPregunta($preguntas[$i]->idPregunta);
+        }
+        $preguntasyrespuestas[]=$preguntas;
+        $preguntasyrespuestas[]=$respuestas;
+        return $preguntasyrespuestas;
     }
 }

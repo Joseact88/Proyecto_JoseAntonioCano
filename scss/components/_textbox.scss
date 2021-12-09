@@ -7,6 +7,13 @@ input[type=text],input[type=password],input[type=date],input[type=file],textarea
     background:$colorFondoInputText;
     box-shadow:$sombraInputText;
     margin-bottom:20px;
+    &#filtro{
+        display:block;
+        margin-left: 5%;
+        border-radius: 50px;
+        width: 200px;
+        margin-bottom: 0;
+    }
     &.formulario{
         width:90%;
         margin-left:10px;
@@ -43,4 +50,12 @@ label{
 }
 input[type=text]:hover,input[type=password]:hover,label:hover ~ input[type=text],label:hover ~ input[type=password]{
  	background:$colorFondoInputTextHover;
+}
+span{
+    &.filtro{
+        position: absolute;
+        font-size: 20px;
+        margin-left: 20%;
+        margin-top: -2.5%;
+    }
 }

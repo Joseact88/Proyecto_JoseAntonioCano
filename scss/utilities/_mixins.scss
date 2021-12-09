@@ -11,7 +11,7 @@
 }
 @mixin coloresTdHover {
     background-color: $hoverColorTabla;
-    color: $colorTabla;
+    color: black;
 }
 @mixin bordesInputText {
     border:1px solid $colorBordeInputText;
@@ -46,4 +46,8 @@
 @mixin tamanyoFormularioExamenes {
     width:900px;
     height: 850px;
+}
+@mixin tamanyoFormularioExamenEjecucion {
+    width:900px;
+    height: 350px;
 }

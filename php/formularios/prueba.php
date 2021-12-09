@@ -25,4 +25,7 @@ $usuario=Sesion::leer('usuario');
     </form>
     <a href="altaUsuarios.php"></a>
 </body>
+    <?php 
+        require "../../footer.php";
+    ?>
 </html>

@@ -1,4 +1,4 @@
-input[type=submit] {
+input[type=submit], button {
     padding:5px 20px;
     border:$bordeBotones;
     border-radius:0.3em;
@@ -10,13 +10,17 @@ input[type=submit] {
     font-size:13px;
     &.activo{
         background-color: red;
+        border: 1px solid red;
+    }
+    &.revisar{
+        background-color: orange;
     }
 }
 .contenedorBoton{
     padding:0 20px 20px 20px; 
     margin-right: 42.5%;
     &.login{
-        margin-right: 10px;
+        margin: 10px;
     }
     &:after {
        clear:both;

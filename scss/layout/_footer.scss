@@ -1,0 +1,86 @@
+/*Aquí debajo va el FOOTER*/
+
+footer{
+    width: 100%;
+    padding: 50px 0px;
+    background-color: #ccc;
+    margin-top: 300px;
+    font-size: $tamanyoLetraFooter;
+    /*Vamos a utilizar flexbox para poner unas columnas al lado de otras*/
+    .contenedor_footer{
+        width: 100%;
+        display: flex;
+        margin: auto;
+    }
+    .caja_footer{
+        display: flex;
+        //Ponemos que se pongan en columnas
+        flex-direction: column;
+        padding: 40px;
+        .logo {
+            img{
+                //Ponemos un tamaño al logo
+                width: 180px;
+            }
+        }
+        .descripcion{
+            //Le ponemos un tamaño máximo a la descripción
+            max-width: 350px;
+            margin-top: 20px;
+            color: $colorLetraFooter;
+        }
+        h2{
+            margin-bottom: 30px;
+            color: $colorH2Footer;
+            font-size: $tamanyoH2;
+        }
+        a{
+            margin-top: 10px;
+            color: $colorEnlaceFooter;
+            //Transiciones en los enlaces
+            transition: color 1s linear;
+            -webkit-transition: color 1s linear;
+            &.instagram{
+                &:hover{
+                    //color de instagram
+                    //linear-gradient(to right, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+                    //No se pueden transiciones con colores degradados
+                    color:#B24BA0;
+                }
+            }
+            &.facebook{
+                &:hover{
+                    //Color facebook
+                    color:#3b5998;
+                }
+            }
+            &.linkedin{
+                &:hover{
+                    //Color linkedin
+                    color:#0e76a8;
+                }
+            }
+            &.twitter{
+                &:hover{
+                    //Color twitter
+                    color:#00acee;
+                }
+            }
+        }
+    }
+    .caja_copy{
+        max-width: 1200px;
+        margin: auto;
+        text-align: center;
+        padding: 0px 40px;
+        p{
+            margin-top: 20px;
+            color: #7a7a7a;
+        }
+        hr{
+            border: none;
+            height: 1px;
+            background-color: #7a7a7a;
+        }
+    }
+}

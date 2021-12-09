@@ -54,8 +54,11 @@ if(isset($_POST['aceptar']))
     <form action="altaMasivaTematicas.php" method="post" id="altaMasivaTematicas">
         <h1>Alta Masiva de Temáticas</h1>
         <label>Alta Masiva Temáticas</label><textarea name="textTematicas" id="textTematicas" rows="25" cols="100" required></textarea>
-        <input type="file" name="csv" id="csv">
+        <input type="file" name="csv" id="csv" accept=".csv">
         <p class="contenedorBoton"><input type="submit" name="aceptar" value="Aceptar" id="aceptar"></p>
     </form>
 </body>
+    <?php 
+        require "../../footer.php";
+    ?>
 </html>

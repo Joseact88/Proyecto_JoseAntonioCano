@@ -47,7 +47,9 @@ if(isset($_POST['aceptar']))
     <link rel="stylesheet" href="../../css/main.css" type="text/css">
 </head>
 <body>
-
+    <?php 
+        require "../../header.php";
+    ?>
     <form action="altaPreguntas.php" method="post" enctype='multipart/form-data' id="form1">
         <h1>Alta Preguntas</h1>
         <label>Tematica:</label><select name="tematica" id="tematica">

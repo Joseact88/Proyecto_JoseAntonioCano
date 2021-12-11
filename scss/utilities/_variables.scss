@@ -35,9 +35,13 @@ $bordesFormulario:1px solid #191919;
 /*Login*/
 $anchuraLogin:400px;
 $fondoRectangulo:linear-gradient(50deg, rgba(255,255,255,0.15), rgba(0,0,0,0));
-$sombraFormularioLogin:0 5px 10px 5px rgba(0,0,0,0.2);
+$sombraFormularioLogin:0 5px 10px 5px rgba(0, 0, 0, 0.2);
 /*Footer*/
-$colorLetraFooter:#7a7a7a;
-$colorH2Footer:#343434;
+$colorFondoFooter:#ccc;
+$colorLetraFooter:#080808;
+$colorH2Footer:#2905A0;
 $tamanyoLetraFooter:14px;
-$colorEnlaceFooter:#7a7a7a;
+$colorEnlaceFooter:#343435;
+/*Header*/
+$colorFondoHeader:#ccc;
+$colorSubmenu:#333333;

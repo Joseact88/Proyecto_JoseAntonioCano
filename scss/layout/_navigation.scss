@@ -1,54 +1,52 @@
-nav {
-    position: static;
-    width: 100%;
-    font-family: Arial, Helvetica, sans-serif;
-    > ul {
-        width: 100%;
-        height: 32px;
-        background-color: #666;
-        color: #eee;
-    }
-    ul {
-    list-style-type: none;
-    padding: 0px;
-    margin: 0px;
-        &.submenu {
-            -webkit-transition: height 0.5s ease-out;
-            transition: height 0.5s ease-out;
-            position: static;
-            height: 0px;
-            overflow: hidden;
-        }
-        li {
-            &.menu{
-                float: left;
-                > a {
-                    -webkit-transition: padding 0.4s ease-out;
-                    transition: padding 0.4s ease-out;
-                }
-                &:hover > a {
-                    padding: 10px 20px;
+//Menú principal
+.navegacion{
+    z-index: 20;
+	width: 37%;
+	margin: 30px auto;
+    background: $colorFondoFormulario;
+    display: inline-block;
+    border-radius: 5px;
+    box-shadow: $sombraFormularioLogin;
+    .menu{ 
+        > li{
+            z-index: 40;
+            position: relative;
+            display: inline-block;
+            > a{
+                //Alineamos los enlaces
+                display: block;
+                padding: 15px 20px;
+                color: $colorTexto;
+                text-decoration: none;
+                &:hover{
+                    color: $colorEnlace;
+                    transition: all .3s;
                 }
             }
-            &:hover ul.submenu {
-                height: 100px;
+            &:hover{
+                .submenu{
+                    //Ponemos su submenú visible
+                    visibility: visible;
+                    opacity: 1;
+                }
             }
         }
-    }
-    a {
-        background-color: #666;
-        color: #eee;
-        text-decoration: none;
-        width: 160px;
-        padding: 7px 20px;
-        display: block;
-        text-align: center;
-        cursor: pointer;
-        &:hover {
-            background-color: #888;
-            color: #fff;
-            -webkit-animation: iluminar 0.4s linear;
-            animation: iluminar 0.4s linear;
+        //Submenu
+        .submenu{
+            position: absolute;
+            background: $colorSubmenu;
+            width: 120%;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 1s;
+            li{
+                a{
+                    display: block;
+                    padding: 15px;
+                    color: $colorTexto;
+                    text-decoration: none;
+                }
+            }
         }
     }
 }

@@ -1,42 +1,35 @@
-<header id="main">
+<header>
 <link href="../../scss/vendors/fontawesome-free-5.15.4-web/css/all.css" rel="stylesheet">
+<a href="http://localhost/Proyecto_JoseAntonioCano/php/formularios/loginForm.php"><img src="../../img/logo.png" alt="Ha ocurrido algún error..."></a>
 <?php
     $usuario=Sesion::leer('usuario');
     if($usuario->idRol==1)
     {
 ?>
 <!--Menú para profesores-->
-<nav>
-    <ul>
-        <li class="menu">
-            <img  src="../../img/pandaCar.png" alt="No se ha podido encontrar la imgen..." width="30" height="30">
-        </li>
-        <li class="menu">
-            <a href="#">Examenes</a>
+<nav class="navegacion">
+    <ul class="menu">
+        <li><a href="http://localhost/Proyecto_JoseAntonioCano/php/tablas/examenes.php">Examenes</a>
             <ul class="submenu">
-                <li><a href="#">Alta Examenes</a></li>
-                <li><a href="#">Histórico</a></li>
+                <li><a href="http://localhost/Proyecto_JoseAntonioCano/php/tablas/examenes.php">Histórico Examenes</a></li>
+                <li><a href="http://localhost/Proyecto_JoseAntonioCano/php/formularios/altaExamenes.php">Alta Examen</a></li>
             </ul>
         </li>
-        <li class="menu">
-            <a href="#">Preguntas</a>
+        <li><a href="http://localhost/Proyecto_JoseAntonioCano/php/tablas/preguntas.php">Preguntas</a>
             <ul class="submenu">
-                <li><a href="#">Preguntas</a></li>
-                <li><a href="#">Preguntas</a></li>
+                <li><a href="http://localhost/Proyecto_JoseAntonioCano/php/formularios/altaPreguntas.php">Alta Pregunta</a></li>
             </ul>
         </li>
-        <li class="menu">
-            <a href="#">Temáticas</a>
+        <li><a href="http://localhost/Proyecto_JoseAntonioCano/php/tablas/tematicas.php">Temáticas</a>
             <ul class="submenu">
-                <li><a href="#">Alta Temáticas</a></li>
-                <li><a href="#">Alta Masiva Temáticas</a></li>
+                <li><a href="http://localhost/Proyecto_JoseAntonioCano/php/formularios/altaTematicas.php">Alta Temática</a></li>
+                <li><a href="http://localhost/Proyecto_JoseAntonioCano/php/formularios/altaMasivaTematicas.php">Ata Masiva Temáticas</a></li>
             </ul>
         </li>
-        <li class="menu">
-            <a href="#">Usuarios</a>
+        <li><a href="http://localhost/Proyecto_JoseAntonioCano/php/tablas/usuarios.php">Usuarios</a>
             <ul class="submenu">
-                <li><a href="#">Alta Usuarios</a></li>
-                <li><a href="#">Alta Masiva Usuarios</a></li>
+                <li><a href="http://localhost/Proyecto_JoseAntonioCano/php/formularios/altaUsuarios.php">Alta Usuario</a></li>
+                <li><a href="http://localhost/Proyecto_JoseAntonioCano/php/formularios/altaMasivaUsuarios.php">Ata Masiva Usuarios</a></li>
             </ul>
         </li>
     </ul>
@@ -45,20 +38,16 @@
     }else{
 ?>
 <!--Menú para alumnos-->
-<nav>
-    <ul>
-        <li class="menu">
-            <a href="#">Histórico de examenes</a>
-        </li>
-        <li class="menu">
-            <a href="#">Examen Predefinido</a>
-        </li>
-        <li class="menu">
-            <a href="#">Examen Aleatorio</a>
-        </li>
+<nav class="navegacion">
+    <ul class="menu">
+        <li><a href="http://localhost/Proyecto_JoseAntonioCano/php/tablas/examenes.php">Histórico Examenes</a></li>
+        <li><a href="#">Examenes</a></li>
+        <li><a href="#">Examen Aleatorio</a></li>
     </ul>
 </nav>
 <?php
     }
 ?>
+<button class="fas fa-sign-out-alt cabecera" id="usuarioExit"></button>
+<button class="far fa-user cabecera" id="usuarioModi"></button>
 </header>

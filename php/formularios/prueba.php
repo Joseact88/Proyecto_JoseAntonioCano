@@ -19,6 +19,9 @@ $usuario=Sesion::leer('usuario');
     <link rel="stylesheet" href="../../css/main.css" type="text/css">
 </head>
 <body>
+    <?php 
+        require "../../header.php";
+    ?>
     <h1>FELICIDADES</h1>
     <form action="../Login/logOff.php" method="POST">
         <input type="submit" value="Cerrar Sesion" name="destruir">

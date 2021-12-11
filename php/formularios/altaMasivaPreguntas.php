@@ -27,6 +27,9 @@ if(isset($_POST['aceptar']))
     <script src="../../js/altaMasiva.js"></script>
 </head>
 <body>
+    <?php 
+        require "../../header.php";
+    ?>
     <form action="altaMasivaPreguntas.php" method="post" id="altaMasivaPreguntas">
         <h1>Alta Masiva de Preguntas</h1>
         <label>Alta Masiva Preguntas</label><textarea name="textPreguntas" id="textPreguntas" rows="25" cols="100" required></textarea>

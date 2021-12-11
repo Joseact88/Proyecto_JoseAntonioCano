@@ -1,3 +1,15 @@
 header {
-  background: gray;
+  //Utilizaremos position sticky para que cuando llegue a top 0 se quede en la parte superior el menú "pegado"
+  position:sticky;
+  top:0;
+	background: $colorFondoHeader;
+  padding: 5px;
+  z-index: 10;
+  box-shadow: $sombraFormularioLogin;
+  img{
+    width: 150px;
+    float: left;
+    margin-right: 20px;
+    margin-left: 16%;
+  }
 }

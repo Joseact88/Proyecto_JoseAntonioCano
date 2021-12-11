@@ -1,15 +1,14 @@
-/*Aquí debajo va el FOOTER*/
-
+//FOOTER
 footer{
     width: 100%;
     padding: 50px 0px;
-    background-color: #ccc;
+    background-color: $colorFondoFooter;
     margin-top: 300px;
     font-size: $tamanyoLetraFooter;
-    /*Vamos a utilizar flexbox para poner unas columnas al lado de otras*/
+    //Vamos a utilizar flexbox para poner unas columnas al lado de otras
     .contenedor_footer{
-        width: 100%;
         display: flex;
+        width: 100%;
         margin: auto;
     }
     .caja_footer{
@@ -40,6 +39,9 @@ footer{
             //Transiciones en los enlaces
             transition: color 1s linear;
             -webkit-transition: color 1s linear;
+            &:hover{
+                opacity: 0.7;
+            }
             &.instagram{
                 &:hover{
                     //color de instagram
@@ -75,12 +77,13 @@ footer{
         padding: 0px 40px;
         p{
             margin-top: 20px;
-            color: #7a7a7a;
+            color: $colorLetraFooter;
         }
+        //Ponemos la línea que separa el contenido del footer del copyright
         hr{
             border: none;
             height: 1px;
-            background-color: #7a7a7a;
+            background-color: $colorLetraFooter;
         }
     }
 }

@@ -15,6 +15,17 @@ input[type=submit], button {
     &.revisar{
         background-color: orange;
     }
+    &.cabecera{
+        background-color: $colorFondoFormulario;
+        border-radius: 50%;
+        padding:10px;
+        margin-right: 5px;
+        margin-top: 30px;
+        box-shadow: $sombraFormularioLogin;
+    }
+    &#usuarioExit{
+        margin-right: 15%;
+    }
 }
 .contenedorBoton{
     padding:0 20px 20px 20px; 

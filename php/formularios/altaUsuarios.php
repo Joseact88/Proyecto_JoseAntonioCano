@@ -43,6 +43,9 @@ if(isset($_POST['aceptar']))
     <link rel="stylesheet" href="../../css/main.css" type="text/css">
 </head>
 <body>
+    <?php 
+        require "../../header.php";
+    ?>
     <form action="altaUsuarios.php" method="post">
         <h1>Alta Usuario</h1>
         <label>Nombre de usuario:</label><input type="text" name="nombre" id="nombre" maxlength="45" required>

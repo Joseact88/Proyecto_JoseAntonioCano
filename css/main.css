@@ -1,4 +1,3 @@
-@charset "UTF-8";
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
@@ -45,6 +44,7 @@ table {
 /*Formularios*/
 /*Login*/
 /*Footer*/
+/*Header*/
 table {
   background-color: #333;
   display: inline-block;
@@ -72,7 +72,6 @@ table th, table td {
 }
 
 table thead {
-  /*@include bordesThead;*/
   background-color: #4E4D4D;
   color: white;
 }
@@ -110,6 +109,20 @@ input[type=submit].activo, button.activo {
 
 input[type=submit].revisar, button.revisar {
   background-color: orange;
+}
+
+input[type=submit].cabecera, button.cabecera {
+  background-color: #111;
+  border-radius: 50%;
+  padding: 10px;
+  margin-right: 5px;
+  margin-top: 30px;
+  -webkit-box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.2);
+}
+
+input[type=submit]#usuarioExit, button#usuarioExit {
+  margin-right: 15%;
 }
 
 .contenedorBoton {
@@ -228,21 +241,19 @@ select.comboNumero {
   margin-left: 15%;
 }
 
-/*Aquí debajo va el FOOTER*/
 footer {
   width: 100%;
   padding: 50px 0px;
   background-color: #ccc;
   margin-top: 300px;
   font-size: 14px;
-  /*Vamos a utilizar flexbox para poner unas columnas al lado de otras*/
 }
 
 footer .contenedor_footer {
-  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  width: 100%;
   margin: auto;
 }
 
@@ -264,20 +275,24 @@ footer .caja_footer .logo img {
 footer .caja_footer .descripcion {
   max-width: 350px;
   margin-top: 20px;
-  color: #7a7a7a;
+  color: #080808;
 }
 
 footer .caja_footer h2 {
   margin-bottom: 30px;
-  color: #343434;
+  color: #2905A0;
   font-size: 16px;
 }
 
 footer .caja_footer a {
   margin-top: 10px;
-  color: #7a7a7a;
+  color: #343435;
   transition: color 1s linear;
   -webkit-transition: color 1s linear;
+}
+
+footer .caja_footer a:hover {
+  opacity: 0.7;
 }
 
 footer .caja_footer a.instagram:hover {
@@ -305,13 +320,13 @@ footer .caja_copy {
 
 footer .caja_copy p {
   margin-top: 20px;
-  color: #7a7a7a;
+  color: #080808;
 }
 
 footer .caja_copy hr {
   border: none;
   height: 1px;
-  background-color: #7a7a7a;
+  background-color: #080808;
 }
 
 form {
@@ -330,7 +345,6 @@ form h1 {
   text-align: center;
   padding: 15px 0;
   border-bottom: 1px solid white;
-  position: relative;
   width: 50%;
   margin: auto;
 }
@@ -407,7 +421,21 @@ article.oculto {
 }
 
 header {
-  background: gray;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background: #ccc;
+  padding: 5px;
+  z-index: 10;
+  -webkit-box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.2);
+}
+
+header img {
+  width: 150px;
+  float: left;
+  margin-right: 20px;
+  margin-left: 16%;
 }
 
 * {
@@ -424,65 +452,55 @@ body {
   margin: 0px;
 }
 
-nav {
-  position: static;
-  width: 100%;
-  font-family: Arial, Helvetica, sans-serif;
+.navegacion {
+  z-index: 20;
+  width: 37%;
+  margin: 30px auto;
+  background: #111;
+  display: inline-block;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.2);
 }
 
-nav > ul {
-  width: 100%;
-  height: 32px;
-  background-color: #666;
-  color: #eee;
+.navegacion .menu > li {
+  z-index: 40;
+  position: relative;
+  display: inline-block;
 }
 
-nav ul {
-  list-style-type: none;
-  padding: 0px;
-  margin: 0px;
-}
-
-nav ul.submenu {
-  -webkit-transition: height 0.5s ease-out;
-  transition: height 0.5s ease-out;
-  position: static;
-  height: 0px;
-  overflow: hidden;
-}
-
-nav ul li.menu {
-  float: left;
-}
-
-nav ul li.menu > a {
-  -webkit-transition: padding 0.4s ease-out;
-  transition: padding 0.4s ease-out;
-}
-
-nav ul li.menu:hover > a {
-  padding: 10px 20px;
-}
-
-nav ul li:hover ul.submenu {
-  height: 100px;
-}
-
-nav a {
-  background-color: #666;
-  color: #eee;
-  text-decoration: none;
-  width: 160px;
-  padding: 7px 20px;
+.navegacion .menu > li > a {
   display: block;
-  text-align: center;
-  cursor: pointer;
+  padding: 15px 20px;
+  color: white;
+  text-decoration: none;
 }
 
-nav a:hover {
-  background-color: #888;
-  color: #fff;
-  -webkit-animation: iluminar 0.4s linear;
-  animation: iluminar 0.4s linear;
+.navegacion .menu > li > a:hover {
+  color: #0d93ff;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+.navegacion .menu > li:hover .submenu {
+  visibility: visible;
+  opacity: 1;
+}
+
+.navegacion .menu .submenu {
+  position: absolute;
+  background: #333333;
+  width: 120%;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: opacity 1s;
+  transition: opacity 1s;
+}
+
+.navegacion .menu .submenu li a {
+  display: block;
+  padding: 15px;
+  color: white;
+  text-decoration: none;
 }
 /*# sourceMappingURL=main.css.map */

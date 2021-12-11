@@ -50,7 +50,9 @@ if(isset($_POST['aceptar']))
     <script src="../../js/altaMasiva.js"></script>
 </head>
 <body>
-
+    <?php 
+        require "../../header.php";
+    ?>
     <form action="altaMasivaTematicas.php" method="post" id="altaMasivaTematicas">
         <h1>Alta Masiva de Temáticas</h1>
         <label>Alta Masiva Temáticas</label><textarea name="textTematicas" id="textTematicas" rows="25" cols="100" required></textarea>

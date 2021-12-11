@@ -33,7 +33,9 @@ if(isset($_POST['aceptar']))
     <link rel="stylesheet" href="../../css/main.css" type="text/css">
 </head>
 <body>
-
+    <?php 
+        require "../../header.php";
+    ?>
     <form action="altaTematicas.php" method="post">
         <h1>Alta Temática</h1>
         <label>Descripcion:</label><input type="text" name="descripcion" id="descripcion" required maxlength="45">

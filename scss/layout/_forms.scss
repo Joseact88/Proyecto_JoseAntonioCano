@@ -18,7 +18,7 @@ form{
         @include tamanyoLogin;
         position: relative;
         margin: 30px auto;
-        /*Recortamos el contenido del rectangulo para que no se salga del formulario*/
+        //Recortamos el contenido del rectangulo para que no se salga del formulario
         overflow:hidden;
         h1{
             &:after{
@@ -42,9 +42,11 @@ form{
         }
     }
 }
+//Metemos aquí también los articles
 article{
     section{
         &.enunciado{
+            //Utilizamos un tamaño de letra más grande que la normal y más chica que el h1
             font-size: $tamanyoH2;
             text-align:center;
             padding:15px 0;
@@ -66,6 +68,7 @@ article{
         }
     }
     &.oculto{
-        display: none;
+        //Ocultamos el contenido
+        @include oculto;
     }
 }

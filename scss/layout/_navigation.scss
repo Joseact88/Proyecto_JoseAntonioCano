@@ -4,6 +4,7 @@
 	width: 37%;
 	margin: 30px auto;
     background: $colorFondoFormulario;
+    //Ponemos display inline-block por si hay más de uno que estén al lado y si no hay hueco una encima de otro
     display: inline-block;
     border-radius: 5px;
     box-shadow: $sombraFormularioLogin;
@@ -11,6 +12,7 @@
         > li{
             z-index: 40;
             position: relative;
+            //Ponemos display inline-block por si hay más de uno que estén al lado y si no hay hueco una encima de otro
             display: inline-block;
             > a{
                 //Alineamos los enlaces
@@ -35,7 +37,6 @@
         .submenu{
             position: absolute;
             background: $colorSubmenu;
-            width: 120%;
             visibility: hidden;
             opacity: 0;
             transition: opacity 1s;

@@ -1,8 +1,7 @@
 select{
     display:block;
     margin-left:25%;
-    color:$colorLabel;
-    background:$colorFondoInputText;
+    @include colorCombo;
     box-shadow:$sombraInputText;
     margin-bottom:10px;
     &:hover{

@@ -43,6 +43,7 @@ table {
 /*Inputs*/
 /*Formularios*/
 /*Login*/
+/*Botones*/
 /*Footer*/
 /*Header*/
 table {
@@ -51,7 +52,7 @@ table {
   text-align: left;
   border-collapse: collapse;
   width: 80%;
-  border-radius: 0.4em;
+  border-radius: 10px;
   margin-left: 100px;
   margin-top: 3%;
 }
@@ -207,7 +208,7 @@ label.formulario {
 }
 
 label.recordar {
-  margin-top: 0px;
+  margin-top: 0;
 }
 
 input[type=text]:hover, input[type=password]:hover, label:hover ~ input[type=text], label:hover ~ input[type=password] {
@@ -245,7 +246,7 @@ footer {
   width: 100%;
   padding: 50px 0px;
   background-color: #ccc;
-  margin-top: 300px;
+  margin-top: 200px;
   font-size: 14px;
 }
 
@@ -354,7 +355,6 @@ form.login {
   height: 320px;
   position: relative;
   margin: 30px auto;
-  /*Recortamos el contenido del rectangulo para que no se salga del formulario*/
   overflow: hidden;
 }
 
@@ -490,7 +490,6 @@ body {
 .navegacion .menu .submenu {
   position: absolute;
   background: #333333;
-  width: 120%;
   visibility: hidden;
   opacity: 0;
   -webkit-transition: opacity 1s;

@@ -36,6 +36,6 @@
 
     <div class="caja_copy">
         <hr>
-        <p>Autoescuela <b>Cano</b></p>
+        <p> © Autoescuela <b>Cano</b></p>
     </div>
 </footer>

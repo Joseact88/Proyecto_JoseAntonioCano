@@ -51,3 +51,47 @@
     width:900px;
     height: 350px;
 }
+@mixin botonRedondo {
+    border-radius: 50%;
+}
+@mixin bordesBotones {
+    border:$bordeBotones;
+    border-radius:0.3em;    
+}
+@mixin colorBotones {
+    background:$colorFondoBotones;
+    color:$colorTexto;
+}
+@mixin colorCombo {
+    color:$colorLabel;
+    background:$colorFondoInputText;    
+}
+@mixin colorParesTabla {
+    background-color: $bgTrPar;
+    color:$colorPares;
+}
+@mixin coloresCajas {
+    color:$colorTexto;
+    background:$colorFondoInputText;
+}
+@mixin tamanyoFiltro {
+    width: $anchuraFiltro;
+}
+@mixin tamanyoInput {
+    width: $anchuraInput;
+}
+@mixin tamanyoInputForm {
+    width:$anchuraInputForm;
+}
+@mixin tamanyoContador {
+    width: $anchuraContador;
+}
+@mixin tamanyoFooter {
+    width: $anchuraFooter;
+}
+@mixin tamanyoLogo {
+    width: $anchuraLogo;
+}
+@mixin oculto {
+    display: none;
+}

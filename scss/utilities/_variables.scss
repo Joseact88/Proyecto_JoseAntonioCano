@@ -8,8 +8,13 @@ $tamanyoH2:16px;
 $sombraH1:0 2px 0 black;
 $sombraH2:0 1px 0 gray;
 $bordesH1:1px solid white;
-$colorFondoBotones:#0184ff;
 $bordeBotones:1px solid rgba(0,0,0,0.4);
+$tamanyoIconos:20px;
+$anchuraLogo:180px;
+$instagram:#B24BA0;
+$twitter:#00acee;
+$facebook:#3b5998;
+$linkedin:#0e76a8;
 /*Tablas*/
 $alturaTablaExamen:400px;
 $anchuraTablaExamen:400px;
@@ -29,6 +34,10 @@ $colorLabel:#666;
 $colorEnlace:#0d93ff;
 $sombraInputText:0 1px 0 rgba(255,255,255,0.1);
 $colorBordeInputText:#222;
+$anchuraFiltro:200px;
+$anchuraInput:50%;
+$anchuraInputForm:90%;
+$anchuraContador:5%;
 /*Formularios*/
 $colorFondoFormulario:#111;
 $bordesFormulario:1px solid #191919;
@@ -36,12 +45,19 @@ $bordesFormulario:1px solid #191919;
 $anchuraLogin:400px;
 $fondoRectangulo:linear-gradient(50deg, rgba(255,255,255,0.15), rgba(0,0,0,0));
 $sombraFormularioLogin:0 5px 10px 5px rgba(0, 0, 0, 0.2);
+/*Botones*/
+$colorFondoBotones:#0184ff;
+$colorBotonActivo:red;
+$colorBotonRevisar:orange;
+$tamanyoLetraBotones:13px;
 /*Footer*/
 $colorFondoFooter:#ccc;
 $colorLetraFooter:#080808;
 $colorH2Footer:#2905A0;
 $tamanyoLetraFooter:14px;
 $colorEnlaceFooter:#343435;
+$anchuraFooter:100%;
 /*Header*/
 $colorFondoHeader:#ccc;
 $colorSubmenu:#333333;
+$tamanyoSubmenu:120%;

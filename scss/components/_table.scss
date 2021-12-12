@@ -1,15 +1,18 @@
 table{
 	background-color: $bgColorTabla;
+    //Ponemos display inline-block por si hay más de una tabla que estén al lado y si no hay hueco una encima de otra
     display: inline-block;
 	text-align: left;
+    //Fusionamos los bordes para que no se vean dobles
 	border-collapse: collapse;
 	width: 80%;    
-    border-radius:0.4em;
+    border-radius:10px;
     margin-left: 100px;
     margin-top: 3%;    
     &.tablaExamen{
         @include tamanyoTablaExamen;
         margin-top: 5px;
+        //Ponemos un scroll en el eje vertical
         overflow-y:scroll;
         margin-left: 3.5%;
         padding-bottom: 5px;
@@ -20,19 +23,18 @@ table{
         width: 100%;
     }
     thead{
-        //@include bordesThead;
         @include coloresTh;
     }
     tr{
         &:nth-child(even){
-            background-color: $bgTrPar;
-            color:$colorPares;
+            @include colorParesTabla;
         }
         &:hover td{
             @include coloresTdHover;
         }
         &.oculto{
-            display: none;
+            //Ocultamos el contenido
+            @include oculto;
         }
     }
 }

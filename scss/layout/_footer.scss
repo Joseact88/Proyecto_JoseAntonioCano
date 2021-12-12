@@ -1,9 +1,9 @@
 //FOOTER
 footer{
-    width: 100%;
+    @include tamanyoFooter;
     padding: 50px 0px;
     background-color: $colorFondoFooter;
-    margin-top: 300px;
+    margin-top: 200px;
     font-size: $tamanyoLetraFooter;
     //Vamos a utilizar flexbox para poner unas columnas al lado de otras
     .contenedor_footer{
@@ -19,7 +19,7 @@ footer{
         .logo {
             img{
                 //Ponemos un tamaño al logo
-                width: 180px;
+                @include tamanyoLogo;
             }
         }
         .descripcion{
@@ -47,25 +47,25 @@ footer{
                     //color de instagram
                     //linear-gradient(to right, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
                     //No se pueden transiciones con colores degradados
-                    color:#B24BA0;
+                    color:$instagram;
                 }
             }
             &.facebook{
                 &:hover{
                     //Color facebook
-                    color:#3b5998;
+                    color:$facebook;
                 }
             }
             &.linkedin{
                 &:hover{
                     //Color linkedin
-                    color:#0e76a8;
+                    color:$linkedin;
                 }
             }
             &.twitter{
                 &:hover{
                     //Color twitter
-                    color:#00acee;
+                    color:$twitter;
                 }
             }
         }

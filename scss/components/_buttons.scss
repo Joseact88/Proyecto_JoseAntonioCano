@@ -1,23 +1,21 @@
 input[type=submit], button {
     padding:5px 20px;
-    border:$bordeBotones;
-    border-radius:0.3em;
-    background:$colorFondoBotones;
-    color:$colorTexto;
+    @include bordesBotones;
+    @include colorBotones;
     float:right;
     font-weight:bold;
     cursor:pointer;
-    font-size:13px;
+    font-size:$tamanyoLetraBotones;
     &.activo{
-        background-color: red;
-        border: 1px solid red;
+        background-color: $colorBotonActivo;
+        border: 1px solid $colorBotonActivo;
     }
     &.revisar{
-        background-color: orange;
+        background-color: $colorBotonRevisar;
     }
     &.cabecera{
         background-color: $colorFondoFormulario;
-        border-radius: 50%;
+        @include botonRedondo;
         padding:10px;
         margin-right: 5px;
         margin-top: 30px;

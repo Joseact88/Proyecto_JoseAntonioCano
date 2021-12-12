@@ -33,35 +33,29 @@ window.addEventListener("load", function()
                 }
             }
         }
-        ajax.open("GET","../formularios/respuestaJSONTablas.php?tabla=usuario&numero="+numero+"&pagina="+pagina);
+        ajax.open("GET","../formularios/respuestaJSONTablas.php?tabla=pregunta&numero="+numero+"&pagina="+pagina);
 
         ajax.send(formData);
     }
-    
-    creaBotones();
+    creaBotonesPaginator();
     function crearContenido(respuesta)
     {
         //Creamos la fila
         const tr=document.createElement("tr");
         //Creamos las celdas
         var td1=document.createElement("td");
-        td1.innerHTML=respuesta.nombre;
+        td1.innerHTML=respuesta.enunciado;
         var td2=document.createElement("td");
-        td2.innerHTML=respuesta.correo;
+        td2.innerHTML=respuesta.descripcion;
         var td3=document.createElement("td");
-        if(respuesta.fechaNac!=null)
-        {
-            td3.innerHTML=respuesta.fechaNac;
-        }else{
-            td3.innerHTML="-";
-        }
-        var td4=document.createElement("td");
         var span1=document.createElement("span");
         span1.className='fas fa-edit editar';
-        span1.id="editarUsuario_"+respuesta.idUsuario;
+        span1.id="editarPregunta_"+respuesta.idPregunta;
         var span2=document.createElement("span");
         span2.className='fas fa-trash eliminar';
-        span2.id="eliminarUsuario_"+respuesta.idUsuario;
+        span2.id="eliminarPregunta_"+respuesta.idPregunta;
+        td3.appendChild(span1);
+        td3.appendChild(span2);
         //LE añadimos los eventos de click a los iconos
         span2.onclick=function() {
             //Activamos el modal de confirmación
@@ -77,18 +71,25 @@ window.addEventListener("load", function()
                 return false;
             }
          }
-         td4.appendChild(span1);
-         td4.appendChild(span2);
         //Añadimos las celdas a la fila
         tr.appendChild(td1);
         tr.appendChild(td2);
         tr.appendChild(td3);
-        tr.appendChild(td4);
         //Añadimos la fila al tbody de la tabla
         tbody.appendChild(tr);
     }
 
-    function creaBotones()
+    
+    comboNumero.onchange=function()
+    {
+        var valorCombo=comboNumero.value;
+        tamanyoForm=valorCombo*100;
+        tamanyoTabla=tamanyoForm-170;
+        form.style="height: "+tamanyoForm+"px";
+        tabla.style="height: "+tamanyoTabla+"px";
+        llamadaAjax(pantalla,valorCombo);
+    }
+    function creaBotonesPaginator()
     {
         for(let i=8; i>=0;i--)
         {
@@ -185,14 +186,5 @@ window.addEventListener("load", function()
             }
             paginator.appendChild(boton);
         }
-    }
-    comboNumero.onchange=function()
-    {
-        var valorCombo=comboNumero.value;
-        tamanyoForm=valorCombo*100;
-        tamanyoTabla=tamanyoForm-170;
-        form.style="height: "+tamanyoForm+"px";
-        tabla.style="height: "+tamanyoTabla+"px";
-        llamadaAjax(pantalla,valorCombo);
     }
 })

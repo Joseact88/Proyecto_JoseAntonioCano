@@ -252,21 +252,25 @@ class GBD
         
         $consulta->execute();
     }
-    //Leemos todas las tematicas
-    public static function leeListaTematicas()
+    //Leemos todos las tematicas
+    public static function leeListaTematicas($filas, $pagina)
     {
+        $filas=intval($filas);
+        $pagina=intval($pagina);
         $consulta = self::$conexion->query("Select idTematica, descripcion FROM tematica");
         $tematicas=array();
-        while ($registro = $consulta->fetch()) 
+        $tematicas =$consulta->fetchAll();
+        $total = count($tematicas);
+        $paginas = ceil($total /$filas);
+        $tematicas = array();
+        if ($pagina <= $paginas)
         {
-            $tematica=new Tematica($registro['descripcion']);
-            $tematica->idTematica=$registro['idTematica'];
-            $tematicas[]=$tematica;
+            $inicio = ($pagina-1) * $filas;
+            $consulta= self::$conexion->query("Select idTematica, descripcion FROM tematica limit $inicio, $filas");
+            $tematicas = $consulta->fetchAll(PDO::FETCH_ASSOC);
         }
-        
         return $tematicas;
     }
-
     //Preguntas
     //Lee una pregunta dado su id
     public static function leePregunta($idPregunta)
@@ -343,7 +347,25 @@ class GBD
         
         return $idPregunta;
     }
-
+    //Leemos todos las Preguntas
+    public static function leeListaPreguntasPaginator($filas, $pagina)
+    {
+        $filas=intval($filas);
+        $pagina=intval($pagina);
+        $consulta = self::$conexion->query("Select p.idPregunta, p.enunciado, p.idTematica,t.descripcion, p.recurso FROM pregunta as p, tematica as t where p.idTematica=t.idTematica");
+        $preguntas=array();
+        $preguntas =$consulta->fetchAll();
+        $total = count($preguntas);
+        $paginas = ceil($total /$filas);
+        $preguntas = array();
+        if ($pagina <= $paginas)
+        {
+            $inicio = ($pagina-1) * $filas;
+            $consulta= self::$conexion->query("Select p.idPregunta, p.enunciado, p.idTematica,t.descripcion, p.recurso FROM pregunta as p, tematica as t where p.idTematica=t.idTematica limit $inicio, $filas");
+            $preguntas = $consulta->fetchAll(PDO::FETCH_ASSOC);
+        }
+        return $preguntas;
+    }
     //Respuestas
     //Lee una respuesta dado su id
     public static function leeRespuesta($idRespuesta)

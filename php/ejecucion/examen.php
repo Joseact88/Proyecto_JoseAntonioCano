@@ -42,9 +42,6 @@ if(isset($_POST['finalizar']))
         <main id=preguntas>
 
         </main>
-        <!--<h2 id="enunciado"></h2>
-        <div id="respuestas"></div>
-        <div id="recurso"></div>-->
         <button id="anterior">Anterior</button>
         <button id="siguiente">Siguiente</button>
         <button id="repasar">Repasar</button>

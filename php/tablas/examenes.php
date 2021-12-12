@@ -11,6 +11,9 @@ if(!Sesion::existe('usuario'))
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <?php 
+        require "../../header.php";
+    ?>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,9 +40,21 @@ if(!Sesion::existe('usuario'))
             <tbody id="tbodyExamenes">
             </tbody>
         </table>
-        <div id="paginator" class="paginator">
+        <main id="paginator" class="paginator">
             
-        </div>
+        </main>
+        <main class="modal" id="modal">
+            <section class="mensaje">
+                <label>¿Estás seguro de que quieres eliminar el registro?</label>
+            </section>
+            <section class="botones">
+                <button id="confirmar">Si</button>
+                <button id="denegar">No</button>
+            </section>
+        </main>
     </form>
+    <?php 
+        require "../../footer.php";
+    ?>
 </body>
 </html>

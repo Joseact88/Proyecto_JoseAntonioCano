@@ -8,7 +8,7 @@ table{
 	width: 80%;    
     border-radius:10px;
     margin-left: 100px;
-    margin-top: 3%;    
+    margin-top: 3%;
     &.tablaExamen{
         @include tamanyoTablaExamen;
         margin-top: 5px;
@@ -17,6 +17,11 @@ table{
         margin-left: 3.5%;
         padding-bottom: 5px;
         margin-bottom: 2.5%;
+    }
+    &.usuarios{
+        th, td{
+            width: 30%;
+        }
     }
     th, td{
         padding: 20px;

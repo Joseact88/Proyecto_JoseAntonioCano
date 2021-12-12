@@ -6,6 +6,7 @@ window.addEventListener("load", function()
     const tbody=tabla.children[1];
     const paginator=this.document.getElementById("paginator");
     const comboNumero=this.document.getElementById("comboNumero");
+    const modal=document.getElementById("modal");
     var pantalla=1;
     llamadaAjax(1,comboNumero.value);
     function llamadaAjax(pagina, numero)
@@ -53,7 +54,31 @@ window.addEventListener("load", function()
         var td4=document.createElement("td");
         td4.innerHTML=respuesta.activo;
         var td5=document.createElement("td");
-        //ACCIONES:td5.innerHTML=respuesta.activo;
+        //Creamos los span
+        var span1=document.createElement("span");
+        span1.className='fas fa-edit editar';
+        span1.id="editarExamen_"+respuesta.idTematica;
+        var span2=document.createElement("span");
+        span2.className='fas fa-trash eliminar';
+        span2.id="eliminarExamen_"+respuesta.idTematica;
+        //LE añadimos los eventos de click a los iconos
+        span2.onclick=function() {
+            //Activamos el modal de confirmación
+            modal.style.display = "block";
+            var aceptar=document.getElementById("confirmar");
+            var denegar=document.getElementById("denegar");
+            aceptar.onclick=function(){
+                modal.style.display = "none";
+                return false;
+            }
+            denegar.onclick=function(){
+                modal.style.display = "none";
+                return false;
+            }
+         }
+        //Añadimos los span a la celda
+        td5.appendChild(span1);
+        td5.appendChild(span2);
         //Añadimos las celdas a la fila
         tr.appendChild(td1);
         tr.appendChild(td2);

@@ -48,6 +48,6 @@
 <?php
     }
 ?>
-<button class="fas fa-sign-out-alt cabecera" id="usuarioExit"></button>
+<a href="../Login/logOff.php"><button class="fas fa-sign-out-alt cabecera" id="usuarioExit"></button></a>
 <button class="far fa-user cabecera" id="usuarioModi"></button>
 </header>

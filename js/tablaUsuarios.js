@@ -7,7 +7,7 @@ window.addEventListener("load", function()
     const paginator=this.document.getElementById("paginator");
     const comboNumero=this.document.getElementById("comboNumero");
     var pantalla=1;
-    llamadaAjax(1,comboNumero.value);
+    llamadaAjax(pantalla,comboNumero.value);
     function llamadaAjax(pagina, numero)
     {
         //Limpiamos la tabla
@@ -58,18 +58,21 @@ window.addEventListener("load", function()
         var td4=document.createElement("td");
         var span1=document.createElement("span");
         span1.className='fas fa-edit editar';
-        span1.id="editarUsuario_"+respuesta.idUsuario;
+        span1.id="editarUsuario_"+respuesta.idUSuario;
         var span2=document.createElement("span");
         span2.className='fas fa-trash eliminar';
-        span2.id="eliminarUsuario_"+respuesta.idUsuario;
+        span2.id="eliminarUsuario_"+respuesta.idUSuario;
         //LE añadimos los eventos de click a los iconos
         span2.onclick=function() {
+            //Capturamos el id del usuario
+            var idUsuario = this.id.split("_")[1];
             //Activamos el modal de confirmación
             modal.style.display = "block";
             var aceptar=document.getElementById("confirmar");
             var denegar=document.getElementById("denegar");
             aceptar.onclick=function(){
                 modal.style.display = "none";
+                ajaxEliminar(idUsuario);
                 return false;
             }
             denegar.onclick=function(){
@@ -194,5 +197,24 @@ window.addEventListener("load", function()
         form.style="height: "+tamanyoForm+"px";
         tabla.style="height: "+tamanyoTabla+"px";
         llamadaAjax(pantalla,valorCombo);
+    }
+    function ajaxEliminar(id)
+    {
+        //Creamos el formData
+        var formData = new FormData();
+        //Creamos el ajax
+        const ajax = new XMLHttpRequest();
+
+        ajax.onreadystatechange = function()
+        {
+            //Vemos si su status es correcto
+            if(ajax.readyState==4 && ajax.status==200)
+            {
+                llamadaAjax(pantalla,comboNumero.value);
+            }
+        }
+        ajax.open("GET","../formularios/eliminador.php?tabla=usuario&id="+id);
+
+        ajax.send(formData);
     }
 })

@@ -74,16 +74,24 @@ class GBD
     //Modificamos un usuario
     public static function modificaUsuario(Usuario $a)
     {
-        $idUsuario=$a->idUsuario;
+        $idUsuario=intval($a->idUsuario);
         $nombre =$a->nombre;
         $apellidos =$a->apellidos;
         $password =$a->password;
         $fechaNac =$a->fechaNac;
-        $idRol =$a->idRol;
-        $activo =$a->activo;
+        $idRol =intval($a->idRol);
+        $activo =intval($a->activo);
         $correo =$a->correo;
 
-        $consulta = self::$conexion->prepare("Update usuario set nombre='$nombre', apellidos='$apellidos', password='$password', fechaNac='$fechaNac', idRol='$idRol' , activo='$activo',Correo='$correo' where idUsuario='$idUsuario'");
+        $consulta = self::$conexion->prepare("Update usuario set nombre='$nombre', apellidos='$apellidos', password='$password', fechaNac='$fechaNac', idRol=$idRol , activo=$activo,correo='$correo' where idUsuario=$idUsuario");
+        
+        return $consulta->execute();
+    }
+    //Eliminar un usuario
+    public static function eliminaUsuario($idUsuario)
+    {
+        $idUsuario=intval($idUsuario);
+        $consulta = self::$conexion->prepare("Delete from usuario where idUsuario='$idUsuario'");
         
         return $consulta->execute();
     }
@@ -132,6 +140,7 @@ class GBD
         }
         return $idUsuario;
     }
+    //Eliminamos el alta por confirmar ya confirmado
     public static function eliminaAltaConfirmar($idAltaConfirmar)
     {
         $consulta = self::$conexion->prepare("Delete from altasconfirmar where idAltaConfirmar='$idAltaConfirmar'");
@@ -179,28 +188,19 @@ class GBD
     //Insertamos un usuario de forma masiva
     public static function grabaUsuarioMasiva($nombre,$correo)
     {
-        try {  
-            self::$conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-          
-            self::$conexion->beginTransaction();
-            $password=md5(libreria::generaContasenya());
-            $rol=1;
-            $activo=1;
-            $consulta = self::$conexion->prepare("Insert into usuario (nombre, password, activo,idRol, correo) VALUES (:nombre, '$password', $activo,$rol, :correo)");
-            
-            $consulta->bindParam(':nombre',$nombre);
-            $consulta->bindParam(':correo',$correo);
-            
-            return $consulta->execute();
-            $idAltaPorConfirmar=md5(libreria::generaContasenya());
-            self::insertaAltaPorConfirmar($idAltaPorConfirmar,self::obtieneUltimoIdUsuario());
-            $enlace="<a href='http://localhost/Proyecto_JoseAntonioCano/php/formularios/confimacionContrasenia.php?idAltaPorConfirmar=$idAltaPorConfirmar'>Restablecer Contraseña</a>";
-            Libreria::enviaEmail('Escribe la contraseña',$correo,$nombre,"Porfavor cambie la contraseña en el siguiente enlace:<br>$enlace");
-            self::$conexion->commit();
-            
-          } catch (Exception $e) {
-            self::$conexion->rollBack();
-        }
+        $password=md5(libreria::generaContasenya());
+        $rol=2;
+        $activo=1;
+        $consulta = self::$conexion->prepare("Insert into usuario (nombre, password, activo,idRol, correo) VALUES (:nombre, '$password', $activo,$rol, :correo)");
+        
+        $consulta->bindParam(':nombre',$nombre);
+        $consulta->bindParam(':correo',$correo);
+        
+        $consulta->execute();
+        $idAltaPorConfirmar=md5(libreria::generaContasenya());
+        self::insertaAltaPorConfirmar($idAltaPorConfirmar,self::obtieneUltimoIdUsuario());
+        $enlace="<a href='http://localhost/Proyecto_JoseAntonioCano/php/formularios/confimacionContrasenia.php?idAltaPorConfirmar=$idAltaPorConfirmar'>Restablecer Contraseña</a>";
+        Libreria::enviaEmail('Escribe la contraseña',$correo,$nombre,"Porfavor cambie la contraseña en el siguiente enlace:<br>$enlace");
         
     }
     //Leemos todos los roles
@@ -286,7 +286,23 @@ class GBD
         }
         return $tematicas;
     }
+    //Eliminar una temática
+    public static function eliminaTematica($id)
+    {
+        $id=intval($id);
+        $consulta = self::$conexion->prepare("Delete from tematica where idTematica='$id'");
+        
+        return $consulta->execute();
+    }
     //Preguntas
+    //Eliminar una pregunta
+    public static function eliminaPregunta($id)
+    {
+        $id=intval($id);
+        $consulta = self::$conexion->prepare("Delete from pregunta where idPregunta='$id'");
+        
+        return $consulta->execute();
+    }
     //Lee una pregunta dado su id
     public static function leePregunta($idPregunta)
     {
@@ -483,6 +499,14 @@ class GBD
     }
     
     //Examenes
+    //Eliminar una examen
+    public static function eliminaExamen($id)
+    {
+        $id=intval($id);
+        $consulta = self::$conexion->prepare("Delete from examen where idExamen='$id'");
+        
+        return $consulta->execute();
+    }
     //Lee un examen dado su id
     public static function leeExamen($idExamen)
     {
@@ -528,7 +552,7 @@ class GBD
     {
         $filas=intval($filas);
         $pagina=intval($pagina);
-        $consulta = self::$conexion->query("Select descripcion, duracion, activo, numPreguntas FROM examen");
+        $consulta = self::$conexion->query("Select idExamen, descripcion, duracion, activo, numPreguntas FROM examen");
         $examenes=array();
         $examenes =$consulta->fetchAll();
         $total = count($examenes);
@@ -537,7 +561,7 @@ class GBD
         if ($pagina <= $paginas)
         {
             $inicio = ($pagina-1) * $filas;
-            $consulta= self::$conexion->query("Select descripcion, duracion, activo, numPreguntas FROM examen limit $inicio, $filas");
+            $consulta= self::$conexion->query("Select idExamen, descripcion, duracion, activo, numPreguntas FROM examen limit $inicio, $filas");
             $examenes = $consulta->fetchAll(PDO::FETCH_ASSOC);
         }
         return $examenes;

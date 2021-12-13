@@ -58,12 +58,15 @@ window.addEventListener("load", function()
         td3.appendChild(span2);
         //LE añadimos los eventos de click a los iconos
         span2.onclick=function() {
+            //Capturamos el id del pregunta
+            var idPregunta = this.id.split("_")[1];
             //Activamos el modal de confirmación
             modal.style.display = "block";
             var aceptar=document.getElementById("confirmar");
             var denegar=document.getElementById("denegar");
             aceptar.onclick=function(){
                 modal.style.display = "none";
+                ajaxEliminar(idPregunta);
                 return false;
             }
             denegar.onclick=function(){
@@ -186,5 +189,24 @@ window.addEventListener("load", function()
             }
             paginator.appendChild(boton);
         }
+    }
+    function ajaxEliminar(id)
+    {
+        //Creamos el formData
+        var formData = new FormData();
+        //Creamos el ajax
+        const ajax = new XMLHttpRequest();
+
+        ajax.onreadystatechange = function()
+        {
+            //Vemos si su status es correcto
+            if(ajax.readyState==4 && ajax.status==200)
+            {
+                llamadaAjax(pantalla,comboNumero.value);
+            }
+        }
+        ajax.open("GET","../formularios/eliminador.php?tabla=pregunta&id="+id);
+
+        ajax.send(formData);
     }
 })

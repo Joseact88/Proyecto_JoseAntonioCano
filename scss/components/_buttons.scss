@@ -8,6 +8,12 @@ input[type=submit], button {
     float:right;
     font-weight:bold;
     font-size:$tamanyoLetraBotones;
+    //Transiciones en los botones
+    transition: background-color 1s linear;
+    -webkit-transition: background-color 1s linear;
+    &:hover{
+        background-color: $colorBotonActivo;
+    }
     &.activo{
         //Cuando el botón del paginatoe está activo cambiamos el color y le añadimos un borde de ese color
         @include botonActivo;

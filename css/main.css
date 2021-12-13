@@ -108,6 +108,12 @@ input[type=submit], button {
   float: right;
   font-weight: bold;
   font-size: 13px;
+  transition: background-color 1s linear;
+  -webkit-transition: background-color 1s linear;
+}
+
+input[type=submit]:hover, button:hover {
+  background-color: #00478C;
 }
 
 input[type=submit].activo, button.activo {
@@ -447,7 +453,8 @@ main.paginator {
 }
 
 main.paginator#botones {
-  margin: auto;
+  margin-right: 27.5%;
+  margin-top: 2%;
 }
 
 main.adicionales {

@@ -54,7 +54,7 @@ if(isset($_POST['aceptar']))
     ?>
     <form action="altaMasivaUsuarios.php" method="post" id="altaMasivaUsuarios">
         <h1>Alta Masiva de Usuarios</h1>
-        <label>Alta Masiva Usuarios</label><textarea name="textUsuarios" id="textUsuarios" rows="25" cols="100" required></textarea>
+        <label>Alta Masiva Usuarios</label><textarea name="textUsuarios" id="textUsuarios" rows="15" cols="100" required></textarea>
         <?php if(isset($validaciones->errores['textUsuarios'])) echo $validaciones->errores['textUsuarios'] ?>
         <input type="file" name="csv" id="csv" accept=".csv">
         <p class="contenedorBoton"><input type="submit" name="aceptar" value="Aceptar" id="aceptar"></p>

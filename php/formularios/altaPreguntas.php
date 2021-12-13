@@ -65,17 +65,17 @@ if(isset($_POST['aceptar']))
         </select>
         <label>Enunciado:</label><textarea name="enunciado" id="enunciado" rows="10" cols="50" required maxlength="200"></textarea><br>
         
-        <label>Opción 1:</label><input type="text" name="op1" id="op1" maxlength="30" required>
+        <label>Opción 1:</label><input type="text" name="op1" id="op1" maxlength="200" required>
         <input type="radio" id="op1Correcta" name="correcta" value="1" checked="checked"> Correcta
         
-        <label>Opción 2:</label><input type="text" name="op2" id="op2" required>
-        <input type="radio" id="op2Correcta" name="correcta" maxlength="30" value="2"> Correcta
+        <label>Opción 2:</label><input type="text" name="op2" id="op2"  maxlength="200" required>
+        <input type="radio" id="op2Correcta" name="correcta" value="2"> Correcta
         
-        <label>Opción 3:</label><input type="text" name="op3" id="op3" required>
-        <input type="radio" id="op3Correcta" name="correcta" maxlength="30" value="3"> Correcta
+        <label>Opción 3:</label><input type="text" name="op3" id="op3" maxlength="200" required>
+        <input type="radio" id="op3Correcta" name="correcta" value="3"> Correcta
         
         <label>Opción 4:</label><input type="text" name="op4" id="op4" required>
-        <input type="radio" id="op4Correcta" name="correcta" maxlength="30" value="4"> Correcta
+        <input type="radio" id="op4Correcta" name="correcta" maxlength="200" value="4"> Correcta
         
         <label for="imagen">Seleccionar imagen</label><input type="file" name="imagen" id="imagen">
 

@@ -4,12 +4,21 @@ header {
   top:0;
 	background: $colorFondoHeader;
   padding: 5px;
+  //Añadimos un z-index y sobreado para dar sensación de profundidad
   z-index: 10;
   box-shadow: $sombraFormularioLogin;
   img{
+    //Tamaño y posición del logo del footer
     width: 150px;
     float: left;
     margin-right: 20px;
     margin-left: 16%;
+    transform: 2s linear;
+    -webkit-transform: 2s linear;
+    //Transicion en la imagen del header
+    &:hover{
+      -webkit-transform: skew(10deg);
+      transform: skew(10deg);
+    }
   }
 }

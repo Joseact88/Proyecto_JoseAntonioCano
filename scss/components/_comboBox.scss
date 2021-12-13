@@ -1,13 +1,16 @@
 select{
+    //Características comunes de todos los selects
     display:block;
     margin-left:25%;
     @include colorCombo;
     box-shadow:$sombraInputText;
     margin-bottom:10px;
     &:hover{
+        //Cambiamos su color cuando pasamos el ratón sobre él
         background:$colorFondoInputTextHover;
     }
     &.comboNumero{
+        //Esete select es más pequeño ya que contiene solo 2 cifras
         margin: 10px;
         margin-left:15%;
     }

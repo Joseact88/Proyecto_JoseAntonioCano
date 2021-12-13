@@ -73,12 +73,12 @@ window.addEventListener("load", function()
                 //Capturamos todos los botones
                 const listaBotones=mainBotones.getElementsByTagName("input");
                 //Capturamos todos los article
-                const listaPreguntas=document.getElementsByTagName("article");
+                const listaPreguntas=main.getElementsByTagName("article");
                 //Recorremos todos los botones para quitarle la clase activo
                 for(let j=0;j<listaBotones.length;j++)
                 {
                     listaBotones[j].classList.remove("activo");
-                    if(j!=listaBotones.length-1)
+                    if(j!=listaBotones.length)
                     {
                         listaPreguntas[j].classList.add("oculto");
                     }
@@ -125,7 +125,7 @@ window.addEventListener("load", function()
         botonesAdicionales[0].onclick=function()
         {
             //Recorremos los botones para ver cual es el que estaba activo
-            for(let j=1;j<listaBotones.length;j++)
+            for(let j=0;j<listaBotones.length;j++)
             {
                 //Si es el último no hacemos nada
                 if(j!=listaBotones.length-1)
@@ -150,11 +150,11 @@ window.addEventListener("load", function()
         botonesAdicionales[1].onclick=function()
         {
             //Recorremos los botones para ver cual es el que estaba activo
-            for(let j=1;j<listaBotones.length;j++)
+            for(let j=0;j<listaBotones.length;j++)
             {
                 //La lista se coge al revés, es decir, el número 1 está en la octava posición
                 //Si es el último no hacemos nada
-                if(j!=1)
+                if(j!=0)
                 {
                     //Buscamos el activo
                     if(listaBotones[j].classList.contains("activo"))

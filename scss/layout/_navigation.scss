@@ -1,12 +1,14 @@
 //Menú principal
 .navegacion{
+    //Características del menú
     z-index: 20;
-	width: 37%;
+	width: 39%;
 	margin: 30px auto;
     background: $colorFondoFormulario;
     //Ponemos display inline-block por si hay más de uno que estén al lado y si no hay hueco una encima de otro
     display: inline-block;
     border-radius: 5px;
+    //Añadimos sombra para dar profundidad
     box-shadow: $sombraFormularioLogin;
     .menu{ 
         > li{
@@ -21,8 +23,9 @@
                 color: $colorTexto;
                 text-decoration: none;
                 &:hover{
+                    //Cambiamos el color al poner encima el cursor con una transición
                     color: $colorEnlace;
-                    transition: all .3s;
+                    transition: all 0.3s;
                 }
             }
             &:hover{
@@ -35,6 +38,7 @@
         }
         //Submenu
         .submenu{
+            //Características del submenú
             position: absolute;
             background: $colorSubmenu;
             visibility: hidden;

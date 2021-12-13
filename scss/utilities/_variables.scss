@@ -1,13 +1,15 @@
 /*General*/
 $colorFondo:#7F7E7E;
-$colorTexto:white;
-$fuente:"HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+$colorTexto:#DDDADA;
+//Utilizar googlefonts
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap');
+$fuente:'Noto Serif', serif;
 $tamanyoTexto:12px;
 $tamanyoH1:18px;
 $tamanyoH2:16px;
-$sombraH1:0 2px 0 black;
-$sombraH2:0 1px 0 gray;
-$bordesH1:1px solid white;
+$sombraH1:0 2px 0 #0D0C0C;
+$sombraH2:0 1px 0 #ABAAAA;
+$bordesH1:1px solid #DDDADA;
 $bordeBotones:1px solid rgba(0,0,0,0.4);
 $tamanyoIconos:20px;
 $anchuraLogo:180px;
@@ -23,8 +25,8 @@ $bordesTabla:1px;
 $theadBgColor:#4E4D4D;
 $bordesthead:#0184ff;
 $bgColorTabla:#333;
-$colorTabla:white;
-$colorPares:black;
+$colorTabla:#DDDADA;
+$colorPares:#0D0C0C;
 $bgTrPar:#ABAAAA;
 $hoverColorTabla:#DDDADA;
 /*Inputs*/
@@ -47,12 +49,14 @@ $fondoRectangulo:linear-gradient(50deg, rgba(255,255,255,0.15), rgba(0,0,0,0));
 $sombraFormularioLogin:0 5px 10px 5px rgba(0, 0, 0, 0.2);
 /*Botones*/
 $colorFondoBotones:#0184ff;
-$colorBotonActivo:red;
-$colorBotonRevisar:orange;
+$colorBotonActivo:#00478C;
+$colorBotonRevisar:#FFBF00;
 $tamanyoLetraBotones:13px;
 /*Footer*/
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@200&display=swap');
+$fuenteFooter:'Crimson Pro', serif;
 $colorFondoFooter:#ccc;
-$colorLetraFooter:#080808;
+$colorLetraFooter:#0D0C0C;
 $colorH2Footer:#2905A0;
 $tamanyoLetraFooter:14px;
 $colorEnlaceFooter:#343435;
@@ -62,5 +66,5 @@ $colorFondoHeader:#ccc;
 $colorSubmenu:#333333;
 $tamanyoSubmenu:120%;
 /*Modal*/
-$colorModal:white;
-$colorLetraModal:black;
+$colorModal:#DDDADA;
+$colorLetraModal:#0D0C0C;

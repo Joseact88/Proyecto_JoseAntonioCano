@@ -59,7 +59,7 @@ class GBD
             $consulta->bindParam(':activo',$activo);
             $consulta->bindParam(':correo',$correo);
             
-            $consulta->execute();
+            return $consulta->execute();
             $idAltaPorConfirmar=md5(libreria::generaContasenya());
             self::insertaAltaPorConfirmar($idAltaPorConfirmar,self::obtieneUltimoIdUsuario());
             $enlace="<a href='http://localhost/Proyecto_JoseAntonioCano/php/formularios/confimacionContrasenia.php?idAltaPorConfirmar=$idAltaPorConfirmar'>Restablecer Contraseña</a>";
@@ -85,7 +85,7 @@ class GBD
 
         $consulta = self::$conexion->prepare("Update usuario set nombre='$nombre', apellidos='$apellidos', password='$password', fechaNac='$fechaNac', idRol='$idRol' , activo='$activo',Correo='$correo' where idUsuario='$idUsuario'");
         
-        $consulta->execute();
+        return $consulta->execute();
     }
     //Modificamos la contraseña de un usuario
     public static function cambiaContrasenia($contrasena, $nombre, $idUsuario)
@@ -94,7 +94,7 @@ class GBD
         $contrasena=md5($contrasena);
         $consulta = self::$conexion->prepare("Update usuario set nombre='$nombre', password='$contrasena' where idUsuario=$idUsuario");
         
-        $consulta->execute();
+        return $consulta->execute();
     }
     //Comprobamos si existe el usuario que nos pasa
     public static function existeUsuario($NombreUsuario, $password)
@@ -144,7 +144,7 @@ class GBD
         $idUsuario=intval($idUsuario);
         $consulta = self::$conexion->prepare("Insert into altasconfirmar (idAltaConfirmar, idUsuario) VALUES ('$idAltaPorConfirmar', $idUsuario)");
         
-        $consulta->execute();
+        return $consulta->execute();
     }
     //Leemos todos los usuarios con rol 2 (alumnos)
     public static function leeListaUsuarios($filas, $pagina)
@@ -191,7 +191,7 @@ class GBD
             $consulta->bindParam(':nombre',$nombre);
             $consulta->bindParam(':correo',$correo);
             
-            $consulta->execute();
+            return $consulta->execute();
             $idAltaPorConfirmar=md5(libreria::generaContasenya());
             self::insertaAltaPorConfirmar($idAltaPorConfirmar,self::obtieneUltimoIdUsuario());
             $enlace="<a href='http://localhost/Proyecto_JoseAntonioCano/php/formularios/confimacionContrasenia.php?idAltaPorConfirmar=$idAltaPorConfirmar'>Restablecer Contraseña</a>";
@@ -240,7 +240,7 @@ class GBD
         
         $consulta->bindParam(':descripcion',$descripcion);
         
-        $consulta->execute();
+        return $consulta->execute();
     }
     //Modificamos una tematica
     public static function modificaTematica(Tematica $a)
@@ -250,10 +250,25 @@ class GBD
 
         $consulta = self::$conexion->prepare("Update tematica set descripcion='$descripcion' where idTematica='$idTematica'");
         
-        $consulta->execute();
+        return $consulta->execute();
+    }
+    
+    //Leemos todas las tematicas
+    public static function leeListaTematicas()
+    {
+        $consulta = self::$conexion->query("Select idTematica, descripcion FROM tematica");
+        $tematicas=array();
+        while ($registro = $consulta->fetch()) 
+        {
+            $tematica=new Tematica($registro['descripcion']);
+            $tematica->idTematica=$registro['idTematica'];
+            $tematicas[]=$tematica;
+        }
+        
+        return $tematicas;
     }
     //Leemos todos las tematicas
-    public static function leeListaTematicas($filas, $pagina)
+    public static function leeListaTematicasPaginator($filas, $pagina)
     {
         $filas=intval($filas);
         $pagina=intval($pagina);
@@ -300,7 +315,7 @@ class GBD
         $consulta->bindParam(':idRespuestaCorrecta',$idRespuestaCorrecta);
         $consulta->bindParam(':recurso',$recurso);
         
-        $consulta->execute();
+        return $consulta->execute();
     }
     //Modificamos una pregunta
     public static function modificaPregunta(Pregunta $a)
@@ -313,7 +328,7 @@ class GBD
 
         $consulta = self::$conexion->prepare("Update pregunta set enunciado='$enunciado', idTematica='$idTematica', idRespuestaCorrecta='$idRespuestaCorrecta', recurso='$recurso' where idPregunta='$idPregunta'");
         
-        $consulta->execute();
+        return $consulta->execute();
     }
     //Leemos todas las preguntas
     public static function leeListaPreguntas()
@@ -334,7 +349,7 @@ class GBD
     {
         $consulta = self::$conexion->prepare("Update pregunta set idRespuestaCorrecta='$idRespuestaCorrecta' where idPregunta='$idPregunta'");
         
-        $consulta->execute();
+        return $consulta->execute();
     }
     //Método que obtiene el id de la última pregunta añadida
     public static function obtieneUltimaIdPregunta()
@@ -390,7 +405,7 @@ class GBD
         
         $consulta->bindParam(':respuesta',$respuesta);
         $consulta->bindParam(':idPregunta',$idPregunta);
-        $consulta->execute();
+        return $consulta->execute();
     }
     //Modificamos una respuesta
     public static function modificaRespuesta(Respuesta $a)
@@ -401,7 +416,7 @@ class GBD
 
         $consulta = self::$conexion->prepare("Update respuesta set respuesta='$respuesta', idPregunta='$idPregunta' where idRespuesta='$idRespuesta'");
         
-        $consulta->execute();
+        return $consulta->execute();
     }
     //Leemos todas las respuestas
     public static function leeListaRespuestas()
@@ -494,7 +509,7 @@ class GBD
         $consulta->bindParam(':descripcion',$descripcion);
         $consulta->bindParam(':activo',$activo);
         
-        $consulta->execute();
+        return $consulta->execute();
     }
     //Modificamos un examen
     public static function modificaExamen(Examen $a)
@@ -506,7 +521,7 @@ class GBD
 
         $consulta = self::$conexion->prepare("Update examen set descripcion='$descripcion', duracion='$duracion', activo='$activo' where idExamen='$idExamen'");
         
-        $consulta->execute();
+        return $consulta->execute();
     }
     //Leemos todos los examenes
     public static function leeListaExamenes($filas, $pagina)
@@ -546,7 +561,7 @@ class GBD
         $consulta->bindParam(':idExamen',$idExamen);
         $consulta->bindParam(':idPregunta',$idPregunta);
         
-        $consulta->execute();
+        return $consulta->execute();
     }
     public static function altaPreguntasExamen($descripcion, $duracion, $preguntas, $numPreguntas)
     {

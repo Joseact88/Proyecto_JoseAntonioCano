@@ -1,12 +1,15 @@
 input[type=text],input[type=password],input[type=date],input[type=file],textarea{
+    //Características comunes de todas las cajas de texto
     @include bordesInputText;
     margin-left:25%;
     @include tamanyoInput;
     padding:8px 5px;
     @include coloresCajas;
+    //Le añadimos sombra para darle profundidad
     box-shadow:$sombraInputText;
     margin-bottom:20px;
     &#filtro{
+        //Colocamos el filtro encima de la tabla
         display:block;
         margin-left: 5%;
         border-radius: 50px;
@@ -14,33 +17,40 @@ input[type=text],input[type=password],input[type=date],input[type=file],textarea
         margin-bottom: 0;
     }
     &.formulario{
+        //Cambiamos el tamaño de las cajas de los ficheros maestros
         @include tamanyoInputForm;
         margin-left:10px;
     }
     &.contador{
+        //Características especiales del contador
         @include tamanyoContador;
         float: right;
         margin-right: 10%;
         margin-top: -2%;
     }
 }
+//Añadimos aquí el checkbox
 input[type=checkbox] {
+    //Hacemos que se alinee de forma vertical
  	display:inline-block;
     vertical-align:top;
 }
 //Introduzco en este campo también los labels
 label{
+    //Características comunes de los labels
     color:$colorLabel;
     margin-left:25%;
     display:block;
     padding-bottom:9px;
     &[for=recordar]{
+        //Características especiales del label de recordar el inicio de sesión
         color:$colorTexto;
         display:inline-block;
         padding-bottom:0;
         padding-top:5px;
     }
     &.formulario{
+        //Cambiamos la posición de las cajas de los ficheros maestros
         margin-left:10px;
         margin-top:10px;
     }

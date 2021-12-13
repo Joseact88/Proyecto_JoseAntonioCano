@@ -1,32 +1,42 @@
 form{
+    //Características comunes de los formularios
     background:$colorFondoFormulario; 
     @include tamanyoFormulario;
     margin: auto;
     border:$bordesFormulario;
     border-radius:0.5em;
+    margin-top: 30px;
+    //Añadimos sombra para dar profundidad
     box-shadow: 0 5px 10px 5px rgba(0,0,0,0.2);
     h1{
+        //Características de los títulos de los ormularios
         font-size:$tamanyoH1;
-        text-shadow:$sombraH1;
         text-align:center;
         padding:15px 0;
-        border-bottom:$bordesH1;
         width: 50%;
         margin:auto;
+        //Añadimos sombra para dar profundidad
+        text-shadow:$sombraH1;
+        //Creamos una línea debajo del título con su propio borde
+        border-bottom:$bordesH1;
     }
     &.login{
+        //Tamaño y posición del login
         @include tamanyoLogin;
         position: relative;
-        margin: 30px auto;
+        margin: 60px auto;
+        margin-left: 43%;
         //Recortamos el contenido del rectangulo para que no se salga del formulario
         overflow:hidden;
         h1{
             &:after{
+                //Añadimos un rectángulo para dar sensación de profesionalidad
                 @include rectanguloLogin;
                 border-width: 100%
             }
         }
     }
+    //Tamaño del formulario según su contenido
     &.tablas{
         @include tamanyoFormularioTablas;
     }
@@ -37,6 +47,7 @@ form{
         @include tamanyoFormularioExamenEjecucion;
     }
     p{
+        //Posición del checkbox
         &.contenedorCheckbox{
             margin-left: 12px;
         }
@@ -54,14 +65,17 @@ main{
                 text-shadow:$sombraH2;
             }
             &.respuestas{
+                //Posición de las respuestas de una pregunta
                 text-align: center;
                 margin:auto;
                 p{
+                    //Colocamos el párrafo de la respuesta
                     display: block;
                     text-align: left;
                     margin-left: 32.5%;
                     margin-bottom: 1%;
                     input[type=radio]{
+                        //Colocamos el radioButton de la respuesta
                         display: inline;
                         margin-right: 1%;
                     }
@@ -74,9 +88,19 @@ main{
         }
     }
     &.paginator{
+        //Colocamos el paginator
         margin-right: 9%;
+        &#botones{
+            margin:auto;
+        }
+    }
+    &.adicionales{
+        //Colocamos los otros botones
+        display: inline-block;
+        margin-left: 35%;
     }
     &.modal{
+        //De primeras dejamos el modal oculto
         @include oculto;
         //Ponemos la posición fija ya que es un modal
         position: fixed;
@@ -93,6 +117,7 @@ main{
         background-color: rgba(0,0,0,0.4);
         
         .mensaje, .botones {
+            //Características del contenido del modal
             background-color: $colorModal;
             font-size: 18px;
             margin: auto;

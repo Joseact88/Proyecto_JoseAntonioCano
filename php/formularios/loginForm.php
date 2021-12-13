@@ -42,7 +42,7 @@ if(isset($_POST['login']))
             // Creamos la variable de sesion usuario de tipo User
             // Redirigimos a la lista de sus datos
             Sesion::escribir('usuario', $usuario);
-            header("Location: prueba.php");                    
+            header("Location: http://localhost/Proyecto_JoseAntonioCano/php/tablas/examenes.php");                    
         }
         else
         {
@@ -62,6 +62,7 @@ if(isset($_POST['login']))
     <link rel="stylesheet" href="../../css/main.css">
 </head>
 <body>
+    <img src="../../img/logo.png" alt="Coche de autoescuela" class="logoLogin">
     <form action="loginForm.php" method="POST" class="login">
         <h1>Autoescuela Jositos</h1>
         <div class="inset">

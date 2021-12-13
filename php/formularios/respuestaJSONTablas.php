@@ -17,7 +17,7 @@ if(isset($_GET['tabla']) && isset($_GET['numero']) && isset($_GET['pagina']))
     }
     if($tabla=="tematica")
     {
-        $respuesta=GBD::leeListaTematicas($numeroPorTabla,$pagina);
+        $respuesta=GBD::leeListaTematicasPaginator($numeroPorTabla,$pagina);
     }
     if($tabla=="pregunta")
     {

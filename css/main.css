@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@200&display=swap");
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
@@ -79,12 +81,12 @@ table th, table td {
 
 table thead {
   background-color: #4E4D4D;
-  color: white;
+  color: #DDDADA;
 }
 
 table tr:nth-child(even) {
   background-color: #ABAAAA;
-  color: black;
+  color: #0D0C0C;
 }
 
 table tr:hover td {
@@ -97,24 +99,24 @@ table tr.oculto {
 }
 
 input[type=submit], button {
-  padding: 5px 20px;
   border: 1px solid rgba(0, 0, 0, 0.4);
   border-radius: 0.3em;
   background: #0184ff;
-  color: white;
+  color: #DDDADA;
+  cursor: pointer;
+  padding: 5px 20px;
   float: right;
   font-weight: bold;
-  cursor: pointer;
   font-size: 13px;
 }
 
 input[type=submit].activo, button.activo {
-  background-color: red;
-  border: 1px solid red;
+  background-color: #00478C;
+  border: 1px solid #00478C;
 }
 
 input[type=submit].revisar, button.revisar {
-  background-color: orange;
+  background-color: #FFBF00;
 }
 
 input[type=submit].cabecera, button.cabecera {
@@ -125,6 +127,12 @@ input[type=submit].cabecera, button.cabecera {
   margin-top: 30px;
   -webkit-box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.2);
           box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.2);
+}
+
+input[type=submit]#finalizar, button#finalizar {
+  float: left;
+  margin-left: 45%;
+  margin-top: 3%;
 }
 
 input[type=submit]#usuarioExit, button#usuarioExit {
@@ -142,7 +150,6 @@ input[type=submit]#usuarioExit, button#usuarioExit {
 
 .contenedorBoton:after {
   clear: both;
-  /*Hacemos que actue como una tabla*/
   display: table;
   content: "";
 }
@@ -160,7 +167,7 @@ input[type=text], input[type=password], input[type=date], input[type=file], text
   margin-left: 25%;
   width: 50%;
   padding: 8px 5px;
-  color: white;
+  color: #DDDADA;
   background: -webkit-gradient(linear, left top, left bottom, from(#1f2124), to(#27292c));
   background: linear-gradient(#1f2124, #27292c);
   -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -201,7 +208,7 @@ label {
 }
 
 label[for=recordar] {
-  color: white;
+  color: #DDDADA;
   display: inline-block;
   padding-bottom: 0;
   padding-top: 5px;
@@ -249,6 +256,7 @@ select.comboNumero {
 
 footer {
   width: 100%;
+  font-family: "Crimson Pro", serif;
   padding: 50px 0px;
   background-color: #ccc;
   margin-top: 200px;
@@ -276,12 +284,19 @@ footer .caja_footer {
 
 footer .caja_footer .logo img {
   width: 180px;
+  -webkit-transition: 2s linear;
+  transition: 2s linear;
+}
+
+footer .caja_footer .logo img:hover {
+  -webkit-transition: rotate(180deg);
+  transition: rotate(180deg);
 }
 
 footer .caja_footer .descripcion {
   max-width: 350px;
   margin-top: 20px;
-  color: #080808;
+  color: #0D0C0C;
 }
 
 footer .caja_footer h2 {
@@ -326,13 +341,13 @@ footer .caja_copy {
 
 footer .caja_copy p {
   margin-top: 20px;
-  color: #080808;
+  color: #0D0C0C;
 }
 
 footer .caja_copy hr {
   border: none;
   height: 1px;
-  background-color: #080808;
+  background-color: #0D0C0C;
 }
 
 form {
@@ -341,25 +356,27 @@ form {
   margin: auto;
   border: 1px solid #191919;
   border-radius: 0.5em;
+  margin-top: 30px;
   -webkit-box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.2);
           box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.2);
 }
 
 form h1 {
   font-size: 18px;
-  text-shadow: 0 2px 0 black;
   text-align: center;
   padding: 15px 0;
-  border-bottom: 1px solid white;
   width: 50%;
   margin: auto;
+  text-shadow: 0 2px 0 #0D0C0C;
+  border-bottom: 1px solid #DDDADA;
 }
 
 form.login {
   width: 400px;
   height: 320px;
   position: relative;
-  margin: 30px auto;
+  margin: 60px auto;
+  margin-left: 43%;
   overflow: hidden;
 }
 
@@ -401,7 +418,7 @@ main article section.enunciado {
   font-size: 16px;
   text-align: center;
   padding: 15px 0;
-  text-shadow: 0 1px 0 gray;
+  text-shadow: 0 1px 0 #ABAAAA;
 }
 
 main article section.respuestas {
@@ -429,6 +446,15 @@ main.paginator {
   margin-right: 9%;
 }
 
+main.paginator#botones {
+  margin: auto;
+}
+
+main.adicionales {
+  display: inline-block;
+  margin-left: 35%;
+}
+
 main.modal {
   display: none;
   position: fixed;
@@ -443,7 +469,7 @@ main.modal {
 }
 
 main.modal .mensaje, main.modal .botones {
-  background-color: white;
+  background-color: #DDDADA;
   font-size: 18px;
   margin: auto;
   width: 80%;
@@ -467,6 +493,13 @@ header img {
   float: left;
   margin-right: 20px;
   margin-left: 16%;
+  transform: 2s linear;
+  -webkit-transform: 2s linear;
+}
+
+header img:hover {
+  -webkit-transform: skew(10deg);
+  transform: skew(10deg);
 }
 
 * {
@@ -475,17 +508,24 @@ header img {
 }
 
 body {
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  color: white;
+  font-family: "Noto Serif", serif;
+  color: #DDDADA;
   font-size: 12px;
   background: #7F7E7E;
   padding: 0px;
   margin: 0px;
 }
 
+body .logoLogin {
+  float: left;
+  width: 300px;
+  margin-left: 60px;
+  margin-top: 30px;
+}
+
 .navegacion {
   z-index: 20;
-  width: 37%;
+  width: 39%;
   margin: 30px auto;
   background: #111;
   display: inline-block;
@@ -503,14 +543,14 @@ body {
 .navegacion .menu > li > a {
   display: block;
   padding: 15px 20px;
-  color: white;
+  color: #DDDADA;
   text-decoration: none;
 }
 
 .navegacion .menu > li > a:hover {
   color: #0d93ff;
-  -webkit-transition: all .3s;
-  transition: all .3s;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 .navegacion .menu > li:hover .submenu {
@@ -530,7 +570,7 @@ body {
 .navegacion .menu .submenu li a {
   display: block;
   padding: 15px;
-  color: white;
+  color: #DDDADA;
   text-decoration: none;
 }
 /*# sourceMappingURL=main.css.map */

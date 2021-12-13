@@ -8,6 +8,7 @@ if(!Sesion::existe('usuario'))
     header("Location: loginForm.php");
 }
 //Vemos si hay un envío del formulario
+$insertado="";
 if(isset($_POST['aceptar']))
 {
     //Comprobamos que ningún campo esté vacío
@@ -24,7 +25,7 @@ if(isset($_POST['aceptar']))
         $preguntasExamen=array();
         $preguntasExamen=explode(",",$_POST['preguntasExamen']);
         //Insertamos el examen
-        GBD::altaPreguntasExamen($descripcion, $duracion,$preguntasExamen, $numPreguntas);
+        $insertado=GBD::altaPreguntasExamen($descripcion, $duracion,$preguntasExamen, $numPreguntas);
     }
 }
 ?>
@@ -78,6 +79,7 @@ if(isset($_POST['aceptar']))
         </table>
         <input type="text" readonly="true" id="contador" class="contador">
         <p class="contenedorBoton"><input type="submit" name="aceptar" value="Aceptar" id="aceptar"></p>
+        <p><?php $insertado ? "Se ha insertado correctamente":"Ha ocurrido un error"?></p>
     </form>
     <?php 
         require "../../footer.php";

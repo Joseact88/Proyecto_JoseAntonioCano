@@ -7,6 +7,7 @@ if(!Sesion::existe('usuario'))
     header("Location: loginForm.php");
 }
 $usuario=Sesion::leer('usuario');
+$insertado="";
 //Comprobamos si ha habido un envío del formulario
 if(isset($_POST['aceptar']))
 {
@@ -29,7 +30,7 @@ if(isset($_POST['aceptar']))
         //Creamos el usuario
         $usuario=new Usuario($nombre,$apellidos, libreria::generaContasenya(), $fechaNac, $rol, 1, $correo);
         //Grabamos el usuario
-        GBD::grabaUsuario($usuario);
+        $insertado=GBD::grabaUsuario($usuario);
     }
 }
 ?>
@@ -64,6 +65,7 @@ if(isset($_POST['aceptar']))
             ?>
         </select>
         <p class="contenedorBoton"><input type="submit" name="aceptar" value="Aceptar" id="aceptar"></p>
+        <p><?php $insertado ? "Se ha insertado correctamente":"Ha ocurrido un error"?></p>
     </form>
 </body>
     <?php 

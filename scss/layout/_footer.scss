@@ -1,6 +1,7 @@
 //FOOTER
 footer{
     @include tamanyoFooter;
+    font-family: $fuenteFooter;
     padding: 50px 0px;
     background-color: $colorFondoFooter;
     margin-top: 200px;
@@ -20,6 +21,13 @@ footer{
             img{
                 //Ponemos un tamaño al logo
                 @include tamanyoLogo;
+                //Transicion logo footer        
+                -webkit-transition: 2s linear;
+                transition: 2s linear;
+                &:hover{
+                    -webkit-transition: rotate(180deg);
+                    transition: rotate(180deg);
+                }
             }
         }
         .descripcion{
@@ -29,6 +37,7 @@ footer{
             color: $colorLetraFooter;
         }
         h2{
+            //Características específicas del h2 del footer
             margin-bottom: 30px;
             color: $colorH2Footer;
             font-size: $tamanyoH2;
@@ -71,6 +80,7 @@ footer{
         }
     }
     .caja_copy{
+        //Características de donde hemos puesto el 'copyright'
         max-width: 1200px;
         margin: auto;
         text-align: center;

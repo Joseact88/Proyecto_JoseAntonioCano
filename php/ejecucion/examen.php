@@ -42,11 +42,13 @@ if(isset($_POST['finalizar']))
         <main id=preguntas>
 
         </main>
-        <button id="anterior">Anterior</button>
-        <button id="siguiente">Siguiente</button>
-        <button id="repasar">Repasar</button>
-        <main id="botones"></main>
-        <input type="submit" value="Finalizar" name="finalizar">
+        <main class="adicionales">
+            <button id="anterior">Anterior</button>
+            <button id="siguiente">Siguiente</button>
+            <button id="repasar">Repasar</button>
+        </main>   
+        <main id="botones" class="paginator"></main>
+        <input type="submit" value="Finalizar" name="finalizar" id="finalizar">
     </form>
     <?php 
         require "../../footer.php";

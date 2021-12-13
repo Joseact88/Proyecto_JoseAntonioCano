@@ -95,3 +95,7 @@
 @mixin oculto {
     display: none;
 }
+@mixin botonActivo {
+    background-color: $colorBotonActivo;
+    border: 1px solid $colorBotonActivo;
+}

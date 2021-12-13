@@ -1,43 +1,58 @@
 input[type=submit], button {
-    padding:5px 20px;
+    //Características comunes de todos los botones
     @include bordesBotones;
     @include colorBotones;
+    //Cuando esté pasando el ratón por encima de un botón se lo cambiamos para que se de cuenta
+    cursor:pointer;
+    padding:5px 20px;
     float:right;
     font-weight:bold;
-    cursor:pointer;
     font-size:$tamanyoLetraBotones;
     &.activo{
-        background-color: $colorBotonActivo;
-        border: 1px solid $colorBotonActivo;
+        //Cuando el botón del paginatoe está activo cambiamos el color y le añadimos un borde de ese color
+        @include botonActivo;
     }
     &.revisar{
+        //Cuando pulsan el botón revisar pone de otro color el botón de la página en la que está
         background-color: $colorBotonRevisar;
     }
     &.cabecera{
+        //Botones de la cabecera
         background-color: $colorFondoFormulario;
         @include botonRedondo;
         padding:10px;
         margin-right: 5px;
         margin-top: 30px;
+        //Le damos profundidad con la sombra
         box-shadow: $sombraFormularioLogin;
     }
+    &#finalizar{
+        //Posición específica del boton de finalizar un examen
+        float: left;
+        margin-left: 45%;
+        margin-top: 3%;
+    }
     &#usuarioExit{
+        //Separamos los botones de la cabecera
         margin-right: 15%;
     }
 }
 .contenedorBoton{
+    //Posición y padding del contenedor que contiene el aceptar
     padding:0 20px 20px 20px; 
     margin-right: 42.5%;
     &.login{
+        //En el login actúa distinto
         margin: 10px;
     }
     &:after {
        clear:both;
-       /*Hacemos que actue como una tabla*/
+       //Hacemos que actue como una tabla
        display:table;
        content:"";
     }
     a{
+        //Hacemos que el enlace esté al lado
        display:block;
        float:left;
        color:$colorEnlace;

@@ -38,7 +38,9 @@ window.addEventListener("load", function()
 
         ajax.send(formData);
     }
-    
+    //Le añadimos el ordenable a las tablas
+    tablaOrdenable();
+    //Creamos los botones
     creaBotones();
     function crearContenido(respuesta)
     {

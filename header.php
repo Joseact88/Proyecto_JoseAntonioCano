@@ -49,5 +49,5 @@
     }
 ?>
 <a href="../Login/logOff.php"><button class="fas fa-sign-out-alt cabecera" id="usuarioExit"></button></a>
-<a href="http://localhost/Proyecto_JoseAntonioCano/php/formularios/altaUsuarios.php"><button class="far fa-user cabecera" id="usuarioModi"></button></a>
+<a href="http://localhost/Proyecto_JoseAntonioCano/php/formularios/altaUsuarios.php?mod"><button class="far fa-user cabecera" id="usuarioModi"></button></a>
 </header>

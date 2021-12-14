@@ -485,7 +485,7 @@ class GBD
         
         return $idRespuesta;
     }
-
+    //Función que da de alta a una pregunta junto a sus respuestas
     public static function altaPreguntaRespuestas($enunciado, $tematica, $imagen, $op, $correcta)
     {
         //Creamos la pregunta
@@ -599,6 +599,7 @@ class GBD
         
         $consulta->execute();
     }
+    //Función que da de alta las preguntas de un examen
     public static function altaPreguntasExamen($descripcion, $duracion, $preguntas, $numPreguntas)
     {
         //Creamos el examen

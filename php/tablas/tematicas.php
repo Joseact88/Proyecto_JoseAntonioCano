@@ -31,7 +31,7 @@ if(!Sesion::existe('usuario'))
         </select>
         <table class="tematicas">
             <thead>
-                <th>Descripción</th>
+                <th class="str">Descripción</th>
                 <th>Acciones</th>
             </thead>
             <tbody id="tbodyTematicas">

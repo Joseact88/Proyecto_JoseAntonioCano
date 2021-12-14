@@ -31,8 +31,8 @@ if(!Sesion::existe('usuario'))
         </select>
         <table class="preguntas">
             <thead>
-                <th>Enunciado</th>
-                <th>Temática</th>
+                <th class="str">Enunciado</th>
+                <th class="str">Temática</th>
                 <th>Acciones</th>
             </thead>
             <tbody id="tbodyPreguntas">

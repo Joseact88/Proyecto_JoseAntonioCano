@@ -31,8 +31,8 @@ if(!Sesion::existe('usuario'))
         </select>
         <table class="usuarios">
             <thead>
-                <th>Alumno/a</th>
-                <th>Correo Electrónico</th>
+                <th class="str">Alumno/a</th>
+                <th class="str">Correo Electrónico</th>
                 <th>Fecha Nacimiento</th>
                 <th>Acciones</th>
             </thead>

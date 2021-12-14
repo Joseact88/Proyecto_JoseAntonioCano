@@ -18,6 +18,7 @@ if(!Sesion::existe('usuario'))
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alumnado</title>
+    <script src="../../js/libreria.js"></script>
     <script src="../../js/tablaExamenes.js"></script>
     <link rel="stylesheet" href="../../css/main.css" type="text/css">
 </head>
@@ -31,10 +32,10 @@ if(!Sesion::existe('usuario'))
         </select>
         <table>
             <thead>
-                <th>Descripción</th>
-                <th>Nº Preguntas</th>
-                <th>Duración</th>
-                <th>Activado</th>
+                <th class="ordenable str">Descripción</th>
+                <th class="ordenable int">Nº Preguntas</th>
+                <th class="ordenable int">Duración</th>
+                <th class="ordenable int">Activado</th>
                 <th>Acciones</th>
             </thead>
             <tbody id="tbodyExamenes">

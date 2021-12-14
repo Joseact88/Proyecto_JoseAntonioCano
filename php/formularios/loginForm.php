@@ -74,7 +74,7 @@ if(isset($_POST['login']))
             </p>
         </div>
         <p class="contenedorBoton login">
-            <a>¿Has olvidado la contraseña?</a>
+            <a href="contraseniaOlvidada.php">¿Has olvidado la contraseña?</a>
             <input type="submit" name="login" value="Aceptar">
         </p>
     </form>

@@ -43,6 +43,10 @@ if(isset($_POST['aceptar']))
             $Nusuario=new Usuario($nombre,$apellidos, libreria::generaContasenya(), $fechaNac, $rol, 1, $correo);
             //Grabamos el usuario
             GBD::grabaUsuario($Nusuario);
+            /*$idAltaPorConfirmar=md5(libreria::generaContasenya());
+            GBD::insertaAltaPorConfirmar($idAltaPorConfirmar,GBD::obtieneUltimoIdUsuario());
+            $enlace="<a href='http://localhost/Proyecto_JoseAntonioCano/php/formularios/confimacionContrasenia.php?idAltaPorConfirmar=$idAltaPorConfirmar'>Restablecer Contraseña</a>";
+            Libreria::enviaEmail('Escribe la contraseña',$correo,$nombre,"Porfavor cambie la contraseña en el siguiente enlace:<br>$enlace");*/
         }else{
             //Creamos el usuario
             $Musuario=new Usuario($nombre,$apellidos, $usuario->password, $fechaNac, $usuario->idRol, 1, $correo);

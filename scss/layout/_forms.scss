@@ -2,6 +2,7 @@ form{
     //Características comunes de los formularios
     background:$colorFondoFormulario; 
     @include tamanyoFormulario;
+    color:$colorTexto;
     margin: auto;
     border:$bordesFormulario;
     border-radius:0.5em;

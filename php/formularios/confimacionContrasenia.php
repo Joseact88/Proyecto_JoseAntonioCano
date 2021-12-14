@@ -30,7 +30,7 @@ if(isset($_GET['idAltaPorConfirmar']))
                     Sesion::iniciar();
                     Sesion::escribir('usuario', GBD::leeUsuario($nombreUsuario,md5($contrasenia)));
                     GBD::eliminaAltaConfirmar($idAltaPorConfirmar);
-                    header('Location: prueba.php');
+                    header('Location: ../tablas/examenes.php');
                 }
             }
         }

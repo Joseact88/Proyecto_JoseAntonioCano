@@ -33,6 +33,18 @@ class GBD
         
         return $nombreUsuario;
     }
+    //Leemos un usuario dado su correo
+    public static function existeCorreo($correo)
+    {
+        $consulta = self::$conexion->query("Select idUSuario, nombre, apellidos,fechaNac, idRol, activo, correo FROM usuario where correo='$correo'");
+        while ($registro = $consulta->fetch()) 
+        {
+            $usuario=new Usuario($registro['nombre'],$registro['apellidos'],null,$registro['fechaNac'],$registro['idRol'],$registro['activo'], $registro['correo']);
+            $usuario->idUsuario=$registro['idUSuario'];
+        }
+        
+        return $usuario;
+    }
     //Insertamos un usuario
     public static function grabaUsuario(Usuario $a)
     {
@@ -59,7 +71,7 @@ class GBD
             $consulta->bindParam(':activo',$activo);
             $consulta->bindParam(':correo',$correo);
             
-            return $consulta->execute();
+            $consulta->execute();
             $idAltaPorConfirmar=md5(libreria::generaContasenya());
             self::insertaAltaPorConfirmar($idAltaPorConfirmar,self::obtieneUltimoIdUsuario());
             $enlace="<a href='http://localhost/Proyecto_JoseAntonioCano/php/formularios/confimacionContrasenia.php?idAltaPorConfirmar=$idAltaPorConfirmar'>Restablecer Contraseña</a>";
@@ -85,7 +97,7 @@ class GBD
 
         $consulta = self::$conexion->prepare("Update usuario set nombre='$nombre', apellidos='$apellidos', password='$password', fechaNac='$fechaNac', idRol=$idRol , activo=$activo,correo='$correo' where idUsuario=$idUsuario");
         
-        return $consulta->execute();
+        $consulta->execute();
     }
     //Eliminar un usuario
     public static function eliminaUsuario($idUsuario)
@@ -93,7 +105,7 @@ class GBD
         $idUsuario=intval($idUsuario);
         $consulta = self::$conexion->prepare("Delete from usuario where idUsuario='$idUsuario'");
         
-        return $consulta->execute();
+        $consulta->execute();
     }
     //Modificamos la contraseña de un usuario
     public static function cambiaContrasenia($contrasena, $nombre, $idUsuario)
@@ -102,7 +114,7 @@ class GBD
         $contrasena=md5($contrasena);
         $consulta = self::$conexion->prepare("Update usuario set nombre='$nombre', password='$contrasena' where idUsuario=$idUsuario");
         
-        return $consulta->execute();
+        $consulta->execute();
     }
     //Comprobamos si existe el usuario que nos pasa
     public static function existeUsuario($NombreUsuario, $password)
@@ -124,7 +136,7 @@ class GBD
          $consulta = self::$conexion->query("Select idUsuario FROM usuario order by idUsuario desc limit 1");
          while ($registro = $consulta->fetch()) 
          {
-             $idUsuario=$registro['idUsuario'];
+            $idUsuario=$registro['idUsuario'];
          }
          
          return $idUsuario;
@@ -145,7 +157,7 @@ class GBD
     {
         $consulta = self::$conexion->prepare("Delete from altasconfirmar where idAltaConfirmar='$idAltaConfirmar'");
         
-        return $consulta->execute();
+        $consulta->execute();
     }
     //Comprobamos si existe el usuario que nos pasa
     public static function insertaAltaPorConfirmar($idAltaPorConfirmar,$idUsuario)
@@ -153,7 +165,7 @@ class GBD
         $idUsuario=intval($idUsuario);
         $consulta = self::$conexion->prepare("Insert into altasconfirmar (idAltaConfirmar, idUsuario) VALUES ('$idAltaPorConfirmar', $idUsuario)");
         
-        return $consulta->execute();
+        $consulta->execute();
     }
     //Leemos todos los usuarios con rol 2 (alumnos)
     public static function leeListaUsuarios($filas, $pagina)
@@ -240,7 +252,7 @@ class GBD
         
         $consulta->bindParam(':descripcion',$descripcion);
         
-        return $consulta->execute();
+        $consulta->execute();
     }
     //Modificamos una tematica
     public static function modificaTematica(Tematica $a)
@@ -250,7 +262,7 @@ class GBD
 
         $consulta = self::$conexion->prepare("Update tematica set descripcion='$descripcion' where idTematica='$idTematica'");
         
-        return $consulta->execute();
+        $consulta->execute();
     }
     
     //Leemos todas las tematicas
@@ -292,7 +304,7 @@ class GBD
         $id=intval($id);
         $consulta = self::$conexion->prepare("Delete from tematica where idTematica='$id'");
         
-        return $consulta->execute();
+        $consulta->execute();
     }
     //Preguntas
     //Eliminar una pregunta
@@ -301,7 +313,7 @@ class GBD
         $id=intval($id);
         $consulta = self::$conexion->prepare("Delete from pregunta where idPregunta='$id'");
         
-        return $consulta->execute();
+        $consulta->execute();
     }
     //Lee una pregunta dado su id
     public static function leePregunta($idPregunta)
@@ -331,7 +343,7 @@ class GBD
         $consulta->bindParam(':idRespuestaCorrecta',$idRespuestaCorrecta);
         $consulta->bindParam(':recurso',$recurso);
         
-        return $consulta->execute();
+        $consulta->execute();
     }
     //Modificamos una pregunta
     public static function modificaPregunta(Pregunta $a)
@@ -344,7 +356,7 @@ class GBD
 
         $consulta = self::$conexion->prepare("Update pregunta set enunciado='$enunciado', idTematica='$idTematica', idRespuestaCorrecta='$idRespuestaCorrecta', recurso='$recurso' where idPregunta='$idPregunta'");
         
-        return $consulta->execute();
+        $consulta->execute();
     }
     //Leemos todas las preguntas
     public static function leeListaPreguntas()
@@ -365,7 +377,7 @@ class GBD
     {
         $consulta = self::$conexion->prepare("Update pregunta set idRespuestaCorrecta='$idRespuestaCorrecta' where idPregunta='$idPregunta'");
         
-        return $consulta->execute();
+        $consulta->execute();
     }
     //Método que obtiene el id de la última pregunta añadida
     public static function obtieneUltimaIdPregunta()
@@ -421,7 +433,7 @@ class GBD
         
         $consulta->bindParam(':respuesta',$respuesta);
         $consulta->bindParam(':idPregunta',$idPregunta);
-        return $consulta->execute();
+        $consulta->execute();
     }
     //Modificamos una respuesta
     public static function modificaRespuesta(Respuesta $a)
@@ -432,7 +444,7 @@ class GBD
 
         $consulta = self::$conexion->prepare("Update respuesta set respuesta='$respuesta', idPregunta='$idPregunta' where idRespuesta='$idRespuesta'");
         
-        return $consulta->execute();
+        $consulta->execute();
     }
     //Leemos todas las respuestas
     public static function leeListaRespuestas()
@@ -505,7 +517,7 @@ class GBD
         $id=intval($id);
         $consulta = self::$conexion->prepare("Delete from examen where idExamen='$id'");
         
-        return $consulta->execute();
+        $consulta->execute();
     }
     //Lee un examen dado su id
     public static function leeExamen($idExamen)
@@ -533,7 +545,7 @@ class GBD
         $consulta->bindParam(':descripcion',$descripcion);
         $consulta->bindParam(':activo',$activo);
         
-        return $consulta->execute();
+        $consulta->execute();
     }
     //Modificamos un examen
     public static function modificaExamen(Examen $a)
@@ -545,7 +557,7 @@ class GBD
 
         $consulta = self::$conexion->prepare("Update examen set descripcion='$descripcion', duracion='$duracion', activo='$activo' where idExamen='$idExamen'");
         
-        return $consulta->execute();
+        $consulta->execute();
     }
     //Leemos todos los examenes
     public static function leeListaExamenes($filas, $pagina)
@@ -585,7 +597,7 @@ class GBD
         $consulta->bindParam(':idExamen',$idExamen);
         $consulta->bindParam(':idPregunta',$idPregunta);
         
-        return $consulta->execute();
+        $consulta->execute();
     }
     public static function altaPreguntasExamen($descripcion, $duracion, $preguntas, $numPreguntas)
     {

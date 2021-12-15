@@ -125,6 +125,10 @@ input[type=submit].revisar, button.revisar {
   background-color: #FFBF00;
 }
 
+input[type=submit].respondida, button.respondida {
+  color: green;
+}
+
 input[type=submit].cabecera, button.cabecera {
   background-color: #111;
   border-radius: 50%;
@@ -419,6 +423,18 @@ form.examenEjecucion {
 
 form p.contenedorCheckbox {
   margin-left: 12px;
+}
+
+form .imagenPregunta {
+  position: absolute;
+  float: left;
+  margin-left: 5%;
+  margin-top: -12%;
+}
+
+form .imagenPregunta img {
+  width: 200px;
+  height: 200px;
 }
 
 main article section.enunciado {

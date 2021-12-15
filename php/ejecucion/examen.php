@@ -7,6 +7,7 @@ if(!Sesion::existe('usuario'))
 {
     header("Location: ../formularios/loginForm.php");
 }
+$usuario=Sesion::leer('usuario');
 if(!isset($_GET['examen']))
 {
     header("Location: ../tablas/examenes.php");
@@ -16,6 +17,8 @@ $idExamen=$_GET['examen'];
 //Vemos si hay un envío del formulario
 if(isset($_POST['finalizar']))
 {  
+    $accion=$_POST['accion'];
+    //Aquí debería insertarse en la BD, ya tengo los campos necesarios: JSON accion, idUsuario, idExamen
 }
 ?>
 <!DOCTYPE html>
@@ -33,11 +36,9 @@ if(isset($_POST['finalizar']))
         require "../../header.php";
     ?>
     <form action="" method="post" class="examenEjecucion" name='<?php echo $idExamen?>'>
-        <section id="reloj">
-            <p>
-                <span id="minutos"></span> : <span id="segundos"></span>
-            </p>
-        </section> 
+        <div id="reloj">
+            
+        </div>
         <h1 id="pregunta"></h1>
         <main id=preguntas>
 

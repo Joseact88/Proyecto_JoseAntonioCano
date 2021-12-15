@@ -22,6 +22,9 @@ input[type=submit], button {
         //Cuando pulsan el botón revisar pone de otro color el botón de la página en la que está
         background-color: $colorBotonRevisar;
     }
+    &.respondida{
+        color: green;
+    }
     &.cabecera{
         //Botones de la cabecera
         background-color: $colorFondoFormulario;

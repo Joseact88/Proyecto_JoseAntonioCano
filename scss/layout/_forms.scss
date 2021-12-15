@@ -53,6 +53,16 @@ form{
             margin-left: 12px;
         }
     }
+    .imagenPregunta{
+        position: absolute;
+        float:left;
+        margin-left: 5%;
+        margin-top: -12%;
+        img{
+            width: 200px;
+            height: 200px;
+        }
+    }
 }
 main{
     //Metemos aquí también los articles

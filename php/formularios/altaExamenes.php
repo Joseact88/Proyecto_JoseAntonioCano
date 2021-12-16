@@ -36,6 +36,7 @@ if(isset($_POST['aceptar']))
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alta usuarios</title>
+    <script src="../../js/libreria.js"></script>
     <script src="../../js/altaExamenes.js"></script>
     <link rel="stylesheet" href="../../css/main.css" type="text/css">
 </head>
@@ -45,9 +46,9 @@ if(isset($_POST['aceptar']))
     ?>
     <form action="altaExamenes.php" method="post" class="examen">
         <h1>Alta Exámenes</h1>
-        <label>Descripción: </label> <input type="text" id="descripcion" name="descripcion" maxlength="200">
-        <label>Duración: </label><input type="text" id="duracion" name="duracion" maxlength="3">
-        <label>Número de Preguntas: </label><input type="text" id="numPreguntas" name="numPreguntas" maxlength="2">
+        <label>Descripción: </label> <input type="text" id="descripcion" name="descripcion" maxlength="200" required>
+        <label>Duración: </label><input type="text" id="duracion" name="duracion" maxlength="3" onkeypress="return soloNumeros(event)" required>
+        <label>Número de Preguntas: </label><input type="text" id="numPreguntas" name="numPreguntas" maxlength="2" onkeypress="return soloNumeros(event)" required>
         <!--Filtros-->
         <label>Tematica: </label><select name="tematica" id="tematica">
             <option value='-1' selected>Sin Seleccionar</option>

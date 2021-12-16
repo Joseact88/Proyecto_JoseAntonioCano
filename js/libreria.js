@@ -9,10 +9,6 @@ function generaContrasenya(num)
     }
     return result;
 }
-function validacion()
-{
-    const cajasTexto=document.getElementsByTagName("input")[type=text];
-}
 function tablaOrdenable()
 {
     //capturamos todos los elementos ordenables
@@ -110,4 +106,44 @@ function ordenaTabla(n,tipo,posicionTabla)
             }
         }
     }
+}
+
+function validacionCorreo()
+{
+    /*/^.+\@.+[.com]/*/
+    const cajasTexto=document.getElementsByTagName("input")[type=text];
+}
+
+/*function validaCajasDeTexto()
+{
+    //
+    const inputs=document.getElementsByTagName("input");
+    const cajasTexto=[];
+    for(let i=0;i<inputs.length;i++)
+    {
+        if(inputs[i].type=="text")
+        {
+            cajasTexto.push(inputs[i]);
+        }
+    }
+    for(let i=0;i<cajasTexto.length;i++)
+    {
+        if(cajasTexto[i].classList.contains("onlyInt"))
+        {
+            cajasTexto[i].onkeydown=devuelveSoloNumeros(event);
+        }
+    }
+}
+
+function devuelveSoloNumeros()
+{
+    return function()
+    {   
+        soloNumeros(e);
+    }
+}*/
+function soloNumeros(e)
+{
+	var key = window.Event ? e.which : e.keyCode
+	return ((key >= 48 && key <= 57) || (key==8))
 }

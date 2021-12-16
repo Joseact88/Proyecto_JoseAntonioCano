@@ -30,30 +30,33 @@ window.addEventListener("load", function()
             }
         }
     }
-    //Creamos el formData
-    var formData = new FormData();
-    //Creamos el ajax
-    const ajax = new XMLHttpRequest();
+    llamadaAjax();
+    function llamadaAjax(){
+        //Creamos el formData
+        var formData = new FormData();
+        //Creamos el ajax
+        const ajax = new XMLHttpRequest();
 
-    ajax.onreadystatechange = function()
-    {
-        //Vemos si su status es correcto
-        if(ajax.readyState==4 && ajax.status==200)
+        ajax.onreadystatechange = function()
         {
-            //Capturamos la respuesta
-            var respuesta = ajax.responseText;
-            //Descodificamos la respuesta
-            respuesta=JSON.parse(respuesta);
-            for(let i=0;i<respuesta.length;i++)
+            //Vemos si su status es correcto
+            if(ajax.readyState==4 && ajax.status==200)
             {
-                //Metemos cada pregunta que haya dentro del json recibido
-                crearContenido(respuesta[i], i);
+                //Capturamos la respuesta
+                var respuesta = ajax.responseText;
+                //Descodificamos la respuesta
+                respuesta=JSON.parse(respuesta);
+                for(let i=0;i<respuesta.length;i++)
+                {
+                    //Metemos cada pregunta que haya dentro del json recibido
+                    crearContenido(respuesta[i], i);
+                }
             }
         }
-    }
-    ajax.open("POST","../formularios/respuestaJSONpreguntas.php");
+        ajax.open("POST","../formularios/respuestaJSONpreguntas.php");
 
-    ajax.send(formData);
+        ajax.send(formData);
+    }
 
     function crearContenido(respuesta, indice)
     {
@@ -165,41 +168,56 @@ window.addEventListener("load", function()
     {
         ev.preventDefault();
     });
-
+    //Capturamos el onclick del botón enviar
     aceptar.onclick=function(ev)
     {
         ev.preventDefault();
         var preguntas=[];
+        //Metemos todas las preguntas en un array
         for(let i=0;i<contenedorPreguntasExamen.childElementCount;i++)
         {
             preguntas.push(contenedorPreguntasExamen.children[i].id.split("_")[1]);
         }
-        debugger;
         var texto=encodeURI("aceptar=aceptar&descripcion="+descripcion.value+"&duracion="+duracion.value+"&preguntasExamen="+preguntas+"&numPreguntas="+numPreguntas.value);
         const ajax=new XMLHttpRequest();
         
         ajax.open("POST","altaExamenes.php");
         ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         ajax.send(texto);
+        //Vaciamos todos los campos de texto y la tabla de la derecha
+        duracion.value="";
+        descripcion.value="";
+        numPreguntas.value="";
+        tematica.value="-1";
+        contador.value="0";
+        contenedorPreguntas.innerHTML="";
+        contenedorPreguntasExamen.innerHTML="";
+        llamadaAjax();
     }
+    //Controlamos el envento onchange del comboBox
     tematica.onchange=function(ev)
     {
         ev.preventDefault();
+        //Recorremos todas las preguntas de la tabla
         for(let i=0;i<contenedorPreguntas.children.length;i++)
         {
             let filaTematica=contenedorPreguntas.children[i];
+            //Si está el sin seleccionar las mostramos todas
             if(tematica.value=="-1")
             {
                 filaTematica.classList.remove("oculto");
             }
             else
             {
+                //Vemos si la temática seleccionada es la temática de la pregunta
                 if(tematica.value==filaTematica.tema.split("_")[1])
                 {
+                    //Si lo es eliminamos la clase oculto
                     filaTematica.classList.remove("oculto");
                 }
                 else
                 {
+                    //Si no lo es, se le añade la clase oculto
                     filaTematica.classList.add("oculto");
                 }
             }

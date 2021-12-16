@@ -171,6 +171,12 @@ input[type=submit]#usuarioExit, button#usuarioExit {
   padding-top: 8px;
 }
 
+.contenedorBoton span {
+  display: block;
+  float: left;
+  padding-top: 8px;
+}
+
 input[type=text], input[type=password], input[type=date], input[type=file], textarea {
   border: 1px solid #222;
   border-radius: 0.3em;

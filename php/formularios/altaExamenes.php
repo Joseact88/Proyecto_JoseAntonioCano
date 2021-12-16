@@ -46,9 +46,9 @@ if(isset($_POST['aceptar']))
     ?>
     <form action="altaExamenes.php" method="post" class="examen">
         <h1>Alta Exámenes</h1>
-        <label>Descripción: </label> <input type="text" id="descripcion" name="descripcion" maxlength="200" required>
-        <label>Duración: </label><input type="text" id="duracion" name="duracion" maxlength="3" onkeypress="return soloNumeros(event)" required>
-        <label>Número de Preguntas: </label><input type="text" id="numPreguntas" name="numPreguntas" maxlength="2" onkeypress="return soloNumeros(event)" required>
+        <label>Descripción: </label> <input type="text" id="descripcion" name="descripcion" maxlength="200">
+        <label>Duración: </label><input type="text" id="duracion" name="duracion" maxlength="3" onkeypress="return soloNumeros(event)">
+        <label>Número de Preguntas: </label><input type="text" id="numPreguntas" name="numPreguntas" maxlength="2" onkeypress="return soloNumeros(event)">
         <!--Filtros-->
         <label>Tematica: </label><select name="tematica" id="tematica">
             <option value='-1' selected>Sin Seleccionar</option>
@@ -64,8 +64,8 @@ if(isset($_POST['aceptar']))
         <input type="text" name="filtro" id="filtro"> <span class="fas fa-search filtro"></span>
         <table id="preguntas" class="tablaExamen">
             <thead>
-                <th>Enunciado</th>
-                <th>Temática</th>
+                <th class="ordenable str">Enunciado</th>
+                <th class="ordenable str">Temática</th>
             </thead>
             <tbody id="tbodyPreguntas">
 
@@ -73,14 +73,14 @@ if(isset($_POST['aceptar']))
         </table>
         <table id="preguntasExamen" class="tablaExamen">
             <thead>
-                <th>Enunciado</th>
-                <th>Temática</th>
+                <th class="ordenable str">Enunciado</th>
+                <th class="ordenable str">Temática</th>
             </thead>
             <tbody id="tbodyPreguntasExamen">
         </table>
         <input type="text" readonly="true" id="contador" class="contador">
-        <p class="contenedorBoton"><input type="submit" name="aceptar" value="Aceptar" id="aceptar"></p>
-        <p><?php $insertado ? "Se ha insertado correctamente":"Ha ocurrido un error"?></p>
+        <p class="contenedorBoton"><span id="error"></span><input type="submit" name="aceptar" value="Aceptar" id="aceptar"></p>
+        
     </form>
     <?php 
         require "../../footer.php";

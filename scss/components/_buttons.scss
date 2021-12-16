@@ -67,4 +67,10 @@ input[type=submit], button {
        color:$colorEnlace;
        padding-top:8px;
     }
+    span{
+        //Hacemos que el enlace esté al lado
+       display:block;
+       float:left;
+       padding-top:8px;
+    }
 }

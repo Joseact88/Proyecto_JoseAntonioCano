@@ -5,6 +5,9 @@ window.addEventListener("load", function()
     const duracion=this.document.getElementById("duracion");
     const descripcion=this.document.getElementById("descripcion");
     const numPreguntas=this.document.getElementById("numPreguntas");
+    numPreguntas.onpaste=function(ev){
+        ev.preventDefault();
+    }
     const tematica=this.document.getElementById("tematica");
     const contador=document.getElementById("contador");
     //Capturamos los botones donde van las preguntas
@@ -14,12 +17,16 @@ window.addEventListener("load", function()
     const tablaPreguntasExamen=this.document.getElementById("preguntasExamen");
     //Capturamos el buscador
     const filtro=document.getElementById("filtro");
+    //Añadimos un evento al filtro para que cuando pulse se actualice la búsqueda
     filtro.onkeyup=function()
     {
         const tablas=contenedorPreguntas.getElementsByTagName("tr");
+        //Recorremos todas los tr
         for(let i=0;i<tablas.length;i++)
         {
+            //Eliminamos la clase marcado de todos
             tablas[i].classList.remove("marcado");
+            //Vemos si el contenido del tr es como lo que hay escrito en el filtro y si es así se le quita la clase oculto
             if(tablas[i].innerHTML.indexOf(filtro.value)<0)
             {
                 tablas[i].classList.add("oculto");
@@ -57,7 +64,8 @@ window.addEventListener("load", function()
 
         ajax.send(formData);
     }
-
+    //Le añadimos el ordenable a las tablas
+    tablaOrdenable();
     function crearContenido(respuesta, indice)
     {
         //Creamos la fila y lo ponemos draggable para poder arrastrarlo
@@ -172,27 +180,35 @@ window.addEventListener("load", function()
     aceptar.onclick=function(ev)
     {
         ev.preventDefault();
-        var preguntas=[];
-        //Metemos todas las preguntas en un array
-        for(let i=0;i<contenedorPreguntasExamen.childElementCount;i++)
+        if(duracion.value!="" && descripcion.value!="" && numPreguntas.value!="")
         {
-            preguntas.push(contenedorPreguntasExamen.children[i].id.split("_")[1]);
+            var preguntas=[];
+            //Metemos todas las preguntas en un array
+            for(let i=0;i<contenedorPreguntasExamen.childElementCount;i++)
+            {
+                preguntas.push(contenedorPreguntasExamen.children[i].id.split("_")[1]);
+            }
+            var texto=encodeURI("aceptar=aceptar&descripcion="+descripcion.value+"&duracion="+duracion.value+"&preguntasExamen="+preguntas+"&numPreguntas="+numPreguntas.value);
+            const ajax=new XMLHttpRequest();
+            
+            ajax.open("POST","altaExamenes.php");
+            ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            ajax.send(texto);
+            //Vaciamos todos los campos de texto y la tabla de la derecha
+            duracion.value="";
+            descripcion.value="";
+            numPreguntas.value="";
+            tematica.value="-1";
+            contador.value="0";
+            contenedorPreguntas.innerHTML="";
+            contenedorPreguntasExamen.innerHTML="";
+            llamadaAjax();
+        }else{
+            const error=document.getElementById("error");
+            error.innerText="Todos los campos deben estar completos";
+            error.style="color:red";
         }
-        var texto=encodeURI("aceptar=aceptar&descripcion="+descripcion.value+"&duracion="+duracion.value+"&preguntasExamen="+preguntas+"&numPreguntas="+numPreguntas.value);
-        const ajax=new XMLHttpRequest();
         
-        ajax.open("POST","altaExamenes.php");
-        ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        ajax.send(texto);
-        //Vaciamos todos los campos de texto y la tabla de la derecha
-        duracion.value="";
-        descripcion.value="";
-        numPreguntas.value="";
-        tematica.value="-1";
-        contador.value="0";
-        contenedorPreguntas.innerHTML="";
-        contenedorPreguntasExamen.innerHTML="";
-        llamadaAjax();
     }
     //Controlamos el envento onchange del comboBox
     tematica.onchange=function(ev)
